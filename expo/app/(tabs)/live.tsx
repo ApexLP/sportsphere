@@ -20,7 +20,7 @@ export default function LiveScreen() {
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const { toggleFavorite, isFavorite } = useFavorites();
 
-  const sports = ["all", "soccer", "baseball", "tennis", "cycling", "golf", "rugby", "motor racing", "combat sports"];
+  const sports = ["all", "soccer", "tennis", "cycling", "golf", "rugby", "motor racing", "combat sports", "boxing", "olympic sports", "nfl", "ncaa football", "ncaa basketball", "ncaa wrestling", "ncaa track", "baseball", "basketball"];
 
   useEffect(() => {
     const interval = setInterval(() => {

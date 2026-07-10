@@ -51,37 +51,6 @@ export const mockTeams: Team[] = [
     record: "Quarterfinals",
     nextGame: "@ ARG"
   },
-  // Baseball / MLB
-  {
-    id: "New York Yankees",
-    name: "New York Yankees",
-    abbreviation: "NYY",
-    sport: "Baseball",
-    league: "MLB",
-    color: "#003087",
-    record: "54-35",
-    nextGame: "vs BOS"
-  },
-  {
-    id: "Boston Red Sox",
-    name: "Boston Red Sox",
-    abbreviation: "BOS",
-    sport: "Baseball",
-    league: "MLB",
-    color: "#BD3039",
-    record: "47-42",
-    nextGame: "@ NYY"
-  },
-  {
-    id: "Los Angeles Dodgers",
-    name: "Los Angeles Dodgers",
-    abbreviation: "LAD",
-    sport: "Baseball",
-    league: "MLB",
-    color: "#005A9C",
-    record: "56-33",
-    nextGame: "vs SD"
-  },
   // Tennis / Wimbledon
   {
     id: "Carlos Alcaraz",
@@ -144,37 +113,6 @@ export const mockTeams: Team[] = [
     record: "2nd Overall",
     nextGame: "Stage 9"
   },
-  // Motor Racing / F1
-  {
-    id: "Max Verstappen",
-    name: "Max Verstappen",
-    abbreviation: "MV",
-    sport: "Motor Racing",
-    league: "Formula 1",
-    color: "#0600EF",
-    record: "Championship Leader",
-    nextGame: "British GP"
-  },
-  {
-    id: "Lewis Hamilton",
-    name: "Lewis Hamilton",
-    abbreviation: "LH",
-    sport: "Motor Racing",
-    league: "Formula 1",
-    color: "#00D2BE",
-    record: "2nd Overall",
-    nextGame: "British GP"
-  },
-  {
-    id: "Lando Norris",
-    name: "Lando Norris",
-    abbreviation: "LN",
-    sport: "Motor Racing",
-    league: "Formula 1",
-    color: "#FF8000",
-    record: "3rd Overall",
-    nextGame: "British GP"
-  },
   // Golf / The Open Championship
   {
     id: "Rory McIlroy",
@@ -217,6 +155,37 @@ export const mockTeams: Team[] = [
     record: "2-0",
     nextGame: "@ ARG"
   },
+  // Motor Racing / F1
+  {
+    id: "Max Verstappen",
+    name: "Max Verstappen",
+    abbreviation: "MV",
+    sport: "Motor Racing",
+    league: "Formula 1",
+    color: "#0600EF",
+    record: "Championship Leader",
+    nextGame: "British GP"
+  },
+  {
+    id: "Lewis Hamilton",
+    name: "Lewis Hamilton",
+    abbreviation: "LH",
+    sport: "Motor Racing",
+    league: "Formula 1",
+    color: "#00D2BE",
+    record: "2nd Overall",
+    nextGame: "British GP"
+  },
+  {
+    id: "Lando Norris",
+    name: "Lando Norris",
+    abbreviation: "LN",
+    sport: "Motor Racing",
+    league: "Formula 1",
+    color: "#FF8000",
+    record: "3rd Overall",
+    nextGame: "British GP"
+  },
   // Combat Sports / UFC
   {
     id: "Islam Makhachev",
@@ -238,6 +207,27 @@ export const mockTeams: Team[] = [
     record: "22-3",
     nextGame: "UFC 316"
   },
+  // Boxing
+  {
+    id: "Canelo Alvarez",
+    name: "Canelo Alvarez",
+    abbreviation: "CA",
+    sport: "Boxing",
+    league: "WBA / WBC",
+    color: "#D20A0A",
+    record: "62-2-2",
+    nextGame: "vs Crawford"
+  },
+  {
+    id: "Terence Crawford",
+    name: "Terence Crawford",
+    abbreviation: "TC",
+    sport: "Boxing",
+    league: "WBO",
+    color: "#1E90FF",
+    record: "41-0",
+    nextGame: "@ Canelo"
+  },
   // Olympic Sports
   {
     id: "USA Gymnastics",
@@ -258,5 +248,232 @@ export const mockTeams: Team[] = [
     color: "#002868",
     record: "Trials Leader",
     nextGame: "LA 2028"
-  }
+  },
+  // NFL
+  {
+    id: "Kansas City Chiefs",
+    name: "Kansas City Chiefs",
+    abbreviation: "KC",
+    sport: "NFL",
+    league: "NFL",
+    color: "#E31837",
+    record: "15-2",
+    nextGame: "Training Camp"
+  },
+  {
+    id: "Buffalo Bills",
+    name: "Buffalo Bills",
+    abbreviation: "BUF",
+    sport: "NFL",
+    league: "NFL",
+    color: "#00338D",
+    record: "13-4",
+    nextGame: "Training Camp"
+  },
+  {
+    id: "Philadelphia Eagles",
+    name: "Philadelphia Eagles",
+    abbreviation: "PHI",
+    sport: "NFL",
+    league: "NFL",
+    color: "#004C54",
+    record: "14-3",
+    nextGame: "Training Camp"
+  },
+  {
+    id: "San Francisco 49ers",
+    name: "San Francisco 49ers",
+    abbreviation: "SF",
+    sport: "NFL",
+    league: "NFL",
+    color: "#AA0000",
+    record: "12-5",
+    nextGame: "Training Camp"
+  },
+  // NCAA Football
+  {
+    id: "Georgia Bulldogs",
+    name: "Georgia Bulldogs",
+    abbreviation: "UGA",
+    sport: "NCAA Football",
+    league: "NCAA FBS",
+    color: "#BA0C2F",
+    record: "13-1",
+    nextGame: "Fall Camp"
+  },
+  {
+    id: "Ohio State Buckeyes",
+    name: "Ohio State Buckeyes",
+    abbreviation: "OSU",
+    sport: "NCAA Football",
+    league: "NCAA FBS",
+    color: "#BB0000",
+    record: "11-2",
+    nextGame: "Fall Camp"
+  },
+  {
+    id: "Michigan Wolverines",
+    name: "Michigan Wolverines",
+    abbreviation: "MICH",
+    sport: "NCAA Football",
+    league: "NCAA FBS",
+    color: "#00274C",
+    record: "10-3",
+    nextGame: "Fall Camp"
+  },
+  {
+    id: "Texas Longhorns",
+    name: "Texas Longhorns",
+    abbreviation: "TEX",
+    sport: "NCAA Football",
+    league: "NCAA FBS",
+    color: "#BF5700",
+    record: "12-2",
+    nextGame: "Fall Camp"
+  },
+  // NCAA Basketball
+  {
+    id: "Duke Blue Devils",
+    name: "Duke Blue Devils",
+    abbreviation: "DUKE",
+    sport: "NCAA Basketball",
+    league: "NCAA D1",
+    color: "#001F5B",
+    record: "31-6",
+    nextGame: "Season Prep"
+  },
+  {
+    id: "Kansas Jayhawks",
+    name: "Kansas Jayhawks",
+    abbreviation: "KU",
+    sport: "NCAA Basketball",
+    league: "NCAA D1",
+    color: "#0085CE",
+    record: "28-8",
+    nextGame: "Season Prep"
+  },
+  {
+    id: "UConn Huskies",
+    name: "UConn Huskies",
+    abbreviation: "UCONN",
+    sport: "NCAA Basketball",
+    league: "NCAA D1",
+    color: "#0000B4",
+    record: "33-5",
+    nextGame: "Season Prep"
+  },
+  {
+    id: "Kentucky Wildcats",
+    name: "Kentucky Wildcats",
+    abbreviation: "UK",
+    sport: "NCAA Basketball",
+    league: "NCAA D1",
+    color: "#005DAA",
+    record: "26-9",
+    nextGame: "Season Prep"
+  },
+  // NCAA Wrestling
+  {
+    id: "Penn State Nittany Lions",
+    name: "Penn State Wrestling",
+    abbreviation: "PSU",
+    sport: "NCAA Wrestling",
+    league: "NCAA D1",
+    color: "#001E44",
+    record: "National Champs",
+    nextGame: "Season Prep"
+  },
+  {
+    id: "Iowa Hawkeyes",
+    name: "Iowa Wrestling",
+    abbreviation: "IOWA",
+    sport: "NCAA Wrestling",
+    league: "NCAA D1",
+    color: "#FFCD00",
+    record: "NCAA Runner-Up",
+    nextGame: "Season Prep"
+  },
+  // NCAA Track & Field
+  {
+    id: "USC Track & Field",
+    name: "USC Track & Field",
+    abbreviation: "USC",
+    sport: "NCAA Track",
+    league: "NCAA D1",
+    color: "#990000",
+    record: "NCAA Champions",
+    nextGame: "Outdoor Finals"
+  },
+  {
+    id: "LSU Track & Field",
+    name: "LSU Track & Field",
+    abbreviation: "LSU",
+    sport: "NCAA Track",
+    league: "NCAA D1",
+    color: "#461D7C",
+    record: "NCAA Runner-Up",
+    nextGame: "Outdoor Finals"
+  },
+  // Baseball / MLB (above NBA)
+  {
+    id: "New York Yankees",
+    name: "New York Yankees",
+    abbreviation: "NYY",
+    sport: "Baseball",
+    league: "MLB",
+    color: "#003087",
+    record: "54-35",
+    nextGame: "vs BOS"
+  },
+  {
+    id: "Boston Red Sox",
+    name: "Boston Red Sox",
+    abbreviation: "BOS",
+    sport: "Baseball",
+    league: "MLB",
+    color: "#BD3039",
+    record: "47-42",
+    nextGame: "@ NYY"
+  },
+  {
+    id: "Los Angeles Dodgers",
+    name: "Los Angeles Dodgers",
+    abbreviation: "LAD",
+    sport: "Baseball",
+    league: "MLB",
+    color: "#005A9C",
+    record: "56-33",
+    nextGame: "vs SD"
+  },
+  // Basketball / NBA (bottom)
+  {
+    id: "Oklahoma City Thunder",
+    name: "Oklahoma City Thunder",
+    abbreviation: "OKC",
+    sport: "Basketball",
+    league: "NBA",
+    color: "#007AC1",
+    record: "NBA Champions",
+    nextGame: "Summer League"
+  },
+  {
+    id: "Indiana Pacers",
+    name: "Indiana Pacers",
+    abbreviation: "IND",
+    sport: "Basketball",
+    league: "NBA",
+    color: "#FDBB30",
+    record: "NBA Finalist",
+    nextGame: "Summer League"
+  },
+  {
+    id: "Denver Nuggets",
+    name: "Denver Nuggets",
+    abbreviation: "DEN",
+    sport: "Basketball",
+    league: "NBA",
+    color: "#0E2240",
+    record: "57-25",
+    nextGame: "Summer League"
+  },
 ];

@@ -14,6 +14,7 @@ export interface LiveScore {
 }
 
 export const mockLiveScores: LiveScore[] = [
+  // Soccer
   {
     id: "1",
     sport: "Soccer",
@@ -41,22 +42,9 @@ export const mockLiveScores: LiveScore[] = [
     status: "UPCOMING",
     time: "8:00 PM ET",
   },
+  // Tennis
   {
     id: "3",
-    sport: "Baseball",
-    league: "MLB",
-    homeTeam: "New York Yankees",
-    awayTeam: "Boston Red Sox",
-    homeScore: 5,
-    awayScore: 3,
-    homeColor: "#003087",
-    awayColor: "#BD3039",
-    status: "LIVE",
-    time: "6th Inning",
-    viewers: "1.2M"
-  },
-  {
-    id: "4",
     sport: "Tennis",
     league: "Wimbledon",
     homeTeam: "Carlos Alcaraz",
@@ -70,7 +58,7 @@ export const mockLiveScores: LiveScore[] = [
     viewers: "980K"
   },
   {
-    id: "5",
+    id: "4",
     sport: "Tennis",
     league: "Wimbledon",
     homeTeam: "Iga Swiatek",
@@ -83,8 +71,9 @@ export const mockLiveScores: LiveScore[] = [
     time: "Set 2",
     viewers: "720K"
   },
+  // Cycling
   {
-    id: "6",
+    id: "5",
     sport: "Cycling",
     league: "Tour de France",
     homeTeam: "Tadej Pogacar",
@@ -97,8 +86,9 @@ export const mockLiveScores: LiveScore[] = [
     time: "Stage 8",
     viewers: "1.8M"
   },
+  // Golf
   {
-    id: "7",
+    id: "6",
     sport: "Golf",
     league: "The Open Championship",
     homeTeam: "Rory McIlroy",
@@ -110,8 +100,9 @@ export const mockLiveScores: LiveScore[] = [
     status: "UPCOMING",
     time: "Tee Off 2:30 PM",
   },
+  // Rugby
   {
-    id: "8",
+    id: "7",
     sport: "Rugby",
     league: "Rugby Championship",
     homeTeam: "New Zealand All Blacks",
@@ -123,8 +114,9 @@ export const mockLiveScores: LiveScore[] = [
     status: "FINISHED",
     time: "Final",
   },
+  // Motor Racing
   {
-    id: "9",
+    id: "8",
     sport: "Motor Racing",
     league: "Formula 1",
     homeTeam: "Max Verstappen",
@@ -136,8 +128,9 @@ export const mockLiveScores: LiveScore[] = [
     status: "UPCOMING",
     time: "British GP Sunday",
   },
+  // Combat Sports / UFC
   {
-    id: "10",
+    id: "9",
     sport: "Combat Sports",
     league: "UFC",
     homeTeam: "Islam Makhachev",
@@ -148,5 +141,198 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#1E90FF",
     status: "UPCOMING",
     time: "UFC 316 Main Event",
-  }
+  },
+  // Boxing
+  {
+    id: "10",
+    sport: "Boxing",
+    league: "WBA / WBC / WBO",
+    homeTeam: "Canelo Alvarez",
+    awayTeam: "Terence Crawford",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#D20A0A",
+    awayColor: "#1E90FF",
+    status: "UPCOMING",
+    time: "Sep 13 PPV",
+  },
+  // Olympic Sports
+  {
+    id: "11",
+    sport: "Olympic Sports",
+    league: "US Olympic Trials",
+    homeTeam: "USA Gymnastics",
+    awayTeam: "USA Swimming",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#B22234",
+    awayColor: "#002868",
+    status: "FINISHED",
+    time: "Trials Complete",
+  },
+  // NFL
+  {
+    id: "12",
+    sport: "NFL",
+    league: "NFL Preseason",
+    homeTeam: "Kansas City Chiefs",
+    awayTeam: "San Francisco 49ers",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#E31837",
+    awayColor: "#AA0000",
+    status: "UPCOMING",
+    time: "Aug 7 Preseason",
+  },
+  {
+    id: "13",
+    sport: "NFL",
+    league: "NFL Preseason",
+    homeTeam: "Buffalo Bills",
+    awayTeam: "Philadelphia Eagles",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#00338D",
+    awayColor: "#004C54",
+    status: "UPCOMING",
+    time: "Aug 10 Preseason",
+  },
+  // NCAA Football
+  {
+    id: "14",
+    sport: "NCAA Football",
+    league: "NCAA FBS",
+    homeTeam: "Georgia Bulldogs",
+    awayTeam: "Ohio State Buckeyes",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#BA0C2F",
+    awayColor: "#BB0000",
+    status: "UPCOMING",
+    time: "Sep 5 Season Opener",
+  },
+  {
+    id: "15",
+    sport: "NCAA Football",
+    league: "NCAA FBS",
+    homeTeam: "Michigan Wolverines",
+    awayTeam: "Texas Longhorns",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#00274C",
+    awayColor: "#BF5700",
+    status: "UPCOMING",
+    time: "Sep 7 Season Opener",
+  },
+  // NCAA Basketball
+  {
+    id: "16",
+    sport: "NCAA Basketball",
+    league: "NCAA D1",
+    homeTeam: "Duke Blue Devils",
+    awayTeam: "Kansas Jayhawks",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#001F5B",
+    awayColor: "#0085CE",
+    status: "UPCOMING",
+    time: "Nov Season Prep",
+  },
+  {
+    id: "17",
+    sport: "NCAA Basketball",
+    league: "NCAA D1",
+    homeTeam: "UConn Huskies",
+    awayTeam: "Kentucky Wildcats",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#0000B4",
+    awayColor: "#005DAA",
+    status: "UPCOMING",
+    time: "Nov Season Prep",
+  },
+  // NCAA Wrestling
+  {
+    id: "18",
+    sport: "NCAA Wrestling",
+    league: "NCAA D1",
+    homeTeam: "Penn State Wrestling",
+    awayTeam: "Iowa Wrestling",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#001E44",
+    awayColor: "#FFCD00",
+    status: "UPCOMING",
+    time: "Nov Season Prep",
+  },
+  // NCAA Track
+  {
+    id: "19",
+    sport: "NCAA Track",
+    league: "NCAA D1 Outdoor",
+    homeTeam: "USC Track & Field",
+    awayTeam: "LSU Track & Field",
+    homeScore: 56,
+    awayScore: 48,
+    homeColor: "#990000",
+    awayColor: "#461D7C",
+    status: "FINISHED",
+    time: "NCAA Finals",
+  },
+  // Baseball (above NBA)
+  {
+    id: "20",
+    sport: "Baseball",
+    league: "MLB",
+    homeTeam: "New York Yankees",
+    awayTeam: "Boston Red Sox",
+    homeScore: 5,
+    awayScore: 3,
+    homeColor: "#003087",
+    awayColor: "#BD3039",
+    status: "LIVE",
+    time: "6th Inning",
+    viewers: "1.2M"
+  },
+  {
+    id: "21",
+    sport: "Baseball",
+    league: "MLB",
+    homeTeam: "Los Angeles Dodgers",
+    awayTeam: "San Diego Padres",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#005A9C",
+    awayColor: "#FFC425",
+    status: "UPCOMING",
+    time: "10:10 PM ET",
+  },
+  // Basketball / NBA (bottom)
+  {
+    id: "22",
+    sport: "Basketball",
+    league: "NBA Summer League",
+    homeTeam: "Oklahoma City Thunder",
+    awayTeam: "Indiana Pacers",
+    homeScore: 78,
+    awayScore: 74,
+    homeColor: "#007AC1",
+    awayColor: "#FDBB30",
+    status: "LIVE",
+    time: "Q3 4:32",
+    viewers: "420K"
+  },
+  {
+    id: "23",
+    sport: "Basketball",
+    league: "NBA Summer League",
+    homeTeam: "Denver Nuggets",
+    awayTeam: "Miami Heat",
+    homeScore: 0,
+    awayScore: 0,
+    homeColor: "#0E2240",
+    awayColor: "#98002E",
+    status: "UPCOMING",
+    time: "11:00 PM ET",
+  },
 ];

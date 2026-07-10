@@ -29,7 +29,7 @@ interface TicketEvent {
   date: string;
   venue: string;
   price: number;
-  category: 'soccer' | 'baseball' | 'tennis' | 'cycling' | 'golf' | 'rugby' | 'motor racing' | 'combat sports' | 'olympic sports' | 'basketball';
+  category: 'soccer' | 'tennis' | 'cycling' | 'golf' | 'rugby' | 'motor racing' | 'combat sports' | 'boxing' | 'olympic sports' | 'nfl' | 'ncaa football' | 'ncaa basketball' | 'ncaa wrestling' | 'ncaa track' | 'baseball' | 'basketball';
   image: string;
   available: boolean;
 }
@@ -95,6 +95,66 @@ const merchandiseData: MerchandiseItem[] = [
     rating: 4.7,
     inStock: true,
   },
+  {
+    id: '7',
+    name: 'Chiefs Super Bowl Champions Hat',
+    price: 39.99,
+    image: 'https://images.unsplash.com/photo-1583237684982-04489d39f5d3?w=300&h=300&fit=crop',
+    category: 'hat',
+    team: 'Kansas City Chiefs',
+    rating: 4.9,
+    inStock: true,
+  },
+  {
+    id: '8',
+    name: 'Canelo vs Crawford Fight Night Jersey',
+    price: 79.99,
+    image: 'https://images.unsplash.com/photo-1546519638-29e946c5b7df?w=300&h=300&fit=crop',
+    category: 'jersey',
+    team: 'Boxing',
+    rating: 4.8,
+    inStock: true,
+  },
+  {
+    id: '9',
+    name: 'Georgia Bulldogs National Champs Hoodie',
+    price: 64.99,
+    image: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=300&h=300&fit=crop',
+    category: 'jersey',
+    team: 'Georgia Bulldogs',
+    rating: 4.8,
+    inStock: true,
+  },
+  {
+    id: '10',
+    name: 'Duke Blue Devils Basketball Jersey',
+    price: 74.99,
+    image: 'https://images.unsplash.com/photo-1546519638-29e946c035d8?w=300&h=300&fit=crop',
+    category: 'jersey',
+    team: 'Duke Blue Devils',
+    rating: 4.7,
+    inStock: true,
+  },
+  {
+    id: '11',
+    name: 'Penn State Wrestling Singlet',
+    price: 54.99,
+    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=300&h=300&fit=crop',
+    category: 'jersey',
+    team: 'Penn State Wrestling',
+    rating: 4.6,
+    inStock: true,
+  },
+  {
+    id: '12',
+    name: 'OKC Thunder NBA Champions Cap',
+    price: 34.99,
+    image: 'https://images.unsplash.com/photo-1546519638-29e946c5b7df?w=300&h=300&fit=crop',
+    category: 'hat',
+    team: 'Oklahoma City Thunder',
+    rating: 4.9,
+    inStock: false,
+  },
 ];
 
 const ticketData: TicketEvent[] = [
@@ -157,6 +217,66 @@ const ticketData: TicketEvent[] = [
     category: 'golf',
     image: 'https://images.unsplash.com/photo-1534150174843-8b52f91f9627?w=400&h=200&fit=crop',
     available: true,
+  },
+  {
+    id: '7',
+    title: 'Canelo vs Crawford PPV Live',
+    date: '2026-09-13',
+    venue: 'Riyadh, Saudi Arabia',
+    price: 79.99,
+    category: 'boxing',
+    image: 'https://images.unsplash.com/photo-1546519638-29e946c5b7df?w=400&h=200&fit=crop',
+    available: true,
+  },
+  {
+    id: '8',
+    title: 'Chiefs vs 49ers Preseason',
+    date: '2026-08-07',
+    venue: 'Arrowhead Stadium, KC',
+    price: 85.00,
+    category: 'nfl',
+    image: 'https://images.unsplash.com/photo-1583237684982-04489d39f5d3?w=400&h=200&fit=crop',
+    available: true,
+  },
+  {
+    id: '9',
+    title: 'Georgia vs Clemson Season Opener',
+    date: '2026-09-05',
+    venue: 'Mercedes-Benz Stadium, Atlanta',
+    price: 175.00,
+    category: 'ncaa football',
+    image: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=200&fit=crop',
+    available: true,
+  },
+  {
+    id: '10',
+    title: 'Duke vs Kentucky Champions Classic',
+    date: '2026-11-11',
+    venue: 'Madison Square Garden, NYC',
+    price: 140.00,
+    category: 'ncaa basketball',
+    image: 'https://images.unsplash.com/photo-1546519638-29e946c035d8?w=400&h=200&fit=crop',
+    available: true,
+  },
+  {
+    id: '11',
+    title: 'Penn State vs Iowa Dual Meet',
+    date: '2026-11-21',
+    venue: 'Rec Hall, State College',
+    price: 45.00,
+    category: 'ncaa wrestling',
+    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&h=200&fit=crop',
+    available: true,
+  },
+  {
+    id: '12',
+    title: 'NCAA Outdoor Track & Field Championships',
+    date: '2026-06-12',
+    venue: 'Hayward Field, Eugene',
+    price: 35.00,
+    category: 'ncaa track',
+    image: 'https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=400&h=200&fit=crop',
+    available: false,
   },
 ];
 
