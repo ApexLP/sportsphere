@@ -10,239 +10,253 @@ export interface Team {
 }
 
 export const mockTeams: Team[] = [
+  // Soccer / World Cup 2026
   {
-    id: "lakers",
-    name: "LA Lakers",
-    abbreviation: "LAL",
-    sport: "Basketball",
-    league: "NBA",
-    color: "#552583",
-    record: "28-13",
-    nextGame: "vs GSW"
+    id: "USA",
+    name: "USA",
+    abbreviation: "USA",
+    sport: "Soccer",
+    league: "World Cup 2026",
+    color: "#B22234",
+    record: "Quarterfinals",
+    nextGame: "vs GER"
   },
   {
-    id: "chiefs",
-    name: "Kansas City Chiefs",
-    abbreviation: "KC",
-    sport: "Football",
-    league: "NFL",
-    color: "#E31837",
-    record: "11-3",
-    nextGame: "@ BUF"
+    id: "Germany",
+    name: "Germany",
+    abbreviation: "GER",
+    sport: "Soccer",
+    league: "World Cup 2026",
+    color: "#000000",
+    record: "Quarterfinals",
+    nextGame: "@ USA"
   },
   {
-    id: "yankees",
+    id: "Argentina",
+    name: "Argentina",
+    abbreviation: "ARG",
+    sport: "Soccer",
+    league: "World Cup 2026",
+    color: "#75AADB",
+    record: "Quarterfinals",
+    nextGame: "vs BRA"
+  },
+  {
+    id: "Brazil",
+    name: "Brazil",
+    abbreviation: "BRA",
+    sport: "Soccer",
+    league: "World Cup 2026",
+    color: "#009C3B",
+    record: "Quarterfinals",
+    nextGame: "@ ARG"
+  },
+  // Baseball / MLB
+  {
+    id: "New York Yankees",
     name: "New York Yankees",
     abbreviation: "NYY",
     sport: "Baseball",
     league: "MLB",
     color: "#003087",
-    record: "82-60",
+    record: "54-35",
     nextGame: "vs BOS"
   },
   {
-    id: "manutd",
-    name: "Manchester United",
-    abbreviation: "MU",
-    sport: "Soccer",
-    league: "Premier League",
-    color: "#DA020E",
-    record: "15W 5D 3L",
-    nextGame: "vs CHE"
-  },
-  {
-    id: "warriors",
-    name: "Golden State Warriors",
-    abbreviation: "GSW",
-    sport: "Basketball",
-    league: "NBA",
-    color: "#1D428A",
-    record: "24-17",
-    nextGame: "@ LAL"
-  },
-  {
-    id: "patriots",
-    name: "New England Patriots",
-    abbreviation: "NE",
-    sport: "Football",
-    league: "NFL",
-    color: "#002244",
-    record: "8-6",
-    nextGame: "vs MIA"
-  },
-  {
-    id: "realmadrid",
-    name: "Real Madrid",
-    abbreviation: "RM",
-    sport: "Soccer",
-    league: "La Liga",
-    color: "#FEBE10",
-    record: "18W 3D 2L",
-    nextGame: "@ BAR"
-  },
-  {
-    id: "celtics",
-    name: "Boston Celtics",
+    id: "Boston Red Sox",
+    name: "Boston Red Sox",
     abbreviation: "BOS",
-    sport: "Basketball",
-    league: "NBA",
-    color: "#007A33",
-    record: "31-10",
-    nextGame: "vs MIA"
+    sport: "Baseball",
+    league: "MLB",
+    color: "#BD3039",
+    record: "47-42",
+    nextGame: "@ NYY"
   },
-  // Motor Racing
   {
-    id: "redbull",
-    name: "Red Bull Racing",
-    abbreviation: "RBR",
+    id: "Los Angeles Dodgers",
+    name: "Los Angeles Dodgers",
+    abbreviation: "LAD",
+    sport: "Baseball",
+    league: "MLB",
+    color: "#005A9C",
+    record: "56-33",
+    nextGame: "vs SD"
+  },
+  // Tennis / Wimbledon
+  {
+    id: "Carlos Alcaraz",
+    name: "Carlos Alcaraz",
+    abbreviation: "CA",
+    sport: "Tennis",
+    league: "Wimbledon",
+    color: "#C60B1E",
+    record: "Semifinal",
+    nextGame: "vs SIN"
+  },
+  {
+    id: "Jannik Sinner",
+    name: "Jannik Sinner",
+    abbreviation: "JS",
+    sport: "Tennis",
+    league: "Wimbledon",
+    color: "#009246",
+    record: "Semifinal",
+    nextGame: "@ ALC"
+  },
+  {
+    id: "Iga Swiatek",
+    name: "Iga Swiatek",
+    abbreviation: "IS",
+    sport: "Tennis",
+    league: "Wimbledon",
+    color: "#DC143C",
+    record: "Quarterfinal",
+    nextGame: "vs GAU"
+  },
+  {
+    id: "Coco Gauff",
+    name: "Coco Gauff",
+    abbreviation: "CG",
+    sport: "Tennis",
+    league: "Wimbledon",
+    color: "#B22234",
+    record: "Quarterfinal",
+    nextGame: "@ SWI"
+  },
+  // Cycling / Tour de France
+  {
+    id: "Tadej Pogacar",
+    name: "Tadej Pogacar",
+    abbreviation: "TP",
+    sport: "Cycling",
+    league: "Tour de France",
+    color: "#FFD700",
+    record: "Yellow Jersey",
+    nextGame: "Stage 9"
+  },
+  {
+    id: "Jonas Vingegaard",
+    name: "Jonas Vingegaard",
+    abbreviation: "JV",
+    sport: "Cycling",
+    league: "Tour de France",
+    color: "#DC143C",
+    record: "2nd Overall",
+    nextGame: "Stage 9"
+  },
+  // Motor Racing / F1
+  {
+    id: "Max Verstappen",
+    name: "Max Verstappen",
+    abbreviation: "MV",
     sport: "Motor Racing",
     league: "Formula 1",
     color: "#0600EF",
-    record: "P1 Championship",
-    nextGame: "Bahrain GP"
+    record: "Championship Leader",
+    nextGame: "British GP"
   },
   {
-    id: "mercedes",
-    name: "Mercedes-AMG F1",
-    abbreviation: "MER",
+    id: "Lewis Hamilton",
+    name: "Lewis Hamilton",
+    abbreviation: "LH",
     sport: "Motor Racing",
     league: "Formula 1",
     color: "#00D2BE",
-    record: "P3 Championship",
-    nextGame: "Bahrain GP"
+    record: "2nd Overall",
+    nextGame: "British GP"
   },
   {
-    id: "ferrari",
-    name: "Scuderia Ferrari",
-    abbreviation: "FER",
+    id: "Lando Norris",
+    name: "Lando Norris",
+    abbreviation: "LN",
     sport: "Motor Racing",
     league: "Formula 1",
-    color: "#DC143C",
-    record: "P2 Championship",
-    nextGame: "Bahrain GP"
+    color: "#FF8000",
+    record: "3rd Overall",
+    nextGame: "British GP"
+  },
+  // Golf / The Open Championship
+  {
+    id: "Rory McIlroy",
+    name: "Rory McIlroy",
+    abbreviation: "RM",
+    sport: "Golf",
+    league: "The Open Championship",
+    color: "#228B22",
+    record: "Tournament Leader",
+    nextGame: "Round 3"
+  },
+  {
+    id: "Scottie Scheffler",
+    name: "Scottie Scheffler",
+    abbreviation: "SS",
+    sport: "Golf",
+    league: "The Open Championship",
+    color: "#003366",
+    record: "2nd Place",
+    nextGame: "Round 3"
+  },
+  // Rugby / Championship
+  {
+    id: "New Zealand All Blacks",
+    name: "New Zealand All Blacks",
+    abbreviation: "NZ",
+    sport: "Rugby",
+    league: "Rugby Championship",
+    color: "#000000",
+    record: "1-1",
+    nextGame: "vs AUS"
+  },
+  {
+    id: "South Africa Springboks",
+    name: "South Africa Springboks",
+    abbreviation: "SA",
+    sport: "Rugby",
+    league: "Rugby Championship",
+    color: "#007A4D",
+    record: "2-0",
+    nextGame: "@ ARG"
+  },
+  // Combat Sports / UFC
+  {
+    id: "Islam Makhachev",
+    name: "Islam Makhachev",
+    abbreviation: "IM",
+    sport: "Combat Sports",
+    league: "UFC",
+    color: "#D20A0A",
+    record: "26-1",
+    nextGame: "UFC 316"
+  },
+  {
+    id: "Arman Tsarukyan",
+    name: "Arman Tsarukyan",
+    abbreviation: "AT",
+    sport: "Combat Sports",
+    league: "UFC",
+    color: "#1E90FF",
+    record: "22-3",
+    nextGame: "UFC 316"
   },
   // Olympic Sports
   {
-    id: "usagymnastics",
+    id: "USA Gymnastics",
     name: "USA Gymnastics",
     abbreviation: "USA",
     sport: "Olympic Sports",
     league: "Olympics",
     color: "#B22234",
-    record: "12 Gold Medals",
-    nextGame: "Paris 2024"
+    record: "Trials Champion",
+    nextGame: "LA 2028"
   },
   {
-    id: "usaswimming",
+    id: "USA Swimming",
     name: "USA Swimming",
     abbreviation: "USA",
     sport: "Olympic Sports",
     league: "Olympics",
     color: "#002868",
-    record: "23 Gold Medals",
-    nextGame: "Paris 2024"
-  },
-  {
-    id: "teamgb",
-    name: "Team Great Britain",
-    abbreviation: "GBR",
-    sport: "Olympic Sports",
-    league: "Olympics",
-    color: "#012169",
-    record: "22 Gold Medals",
-    nextGame: "Paris 2024"
-  },
-  // Rugby
-  {
-    id: "allblacks",
-    name: "New Zealand All Blacks",
-    abbreviation: "NZ",
-    sport: "Rugby",
-    league: "International",
-    color: "#000000",
-    record: "World Champions",
-    nextGame: "vs AUS"
-  },
-  {
-    id: "springboks",
-    name: "South Africa Springboks",
-    abbreviation: "SA",
-    sport: "Rugby",
-    league: "International",
-    color: "#007A4D",
-    record: "World Cup Winners",
-    nextGame: "vs ARG"
-  },
-  {
-    id: "england",
-    name: "England Rugby",
-    abbreviation: "ENG",
-    sport: "Rugby",
-    league: "Six Nations",
-    color: "#FFFFFF",
-    record: "2nd Place",
-    nextGame: "vs FRA"
-  },
-  // Golf
-  {
-    id: "pgatour",
-    name: "PGA Tour",
-    abbreviation: "PGA",
-    sport: "Golf",
-    league: "Professional",
-    color: "#003366",
-    record: "Season Leader",
-    nextGame: "Masters"
-  },
-  {
-    id: "europetour",
-    name: "DP World Tour",
-    abbreviation: "DPW",
-    sport: "Golf",
-    league: "European",
-    color: "#1E3A8A",
-    record: "Race to Dubai",
-    nextGame: "Dubai Championship"
-  },
-  {
-    id: "rydercup",
-    name: "Team Europe",
-    abbreviation: "EUR",
-    sport: "Golf",
-    league: "Ryder Cup",
-    color: "#FFD700",
-    record: "Cup Holders",
-    nextGame: "vs USA"
-  },
-  // Combat Sports
-  {
-    id: "ufc",
-    name: "UFC Champions",
-    abbreviation: "UFC",
-    sport: "Combat Sports",
-    league: "Mixed Martial Arts",
-    color: "#D20A0A",
-    record: "Championship",
-    nextGame: "UFC 300"
-  },
-  {
-    id: "boxing",
-    name: "World Boxing Council",
-    abbreviation: "WBC",
-    sport: "Combat Sports",
-    league: "Professional Boxing",
-    color: "#228B22",
-    record: "Title Defense",
-    nextGame: "Championship Fight"
-  },
-  {
-    id: "wwe",
-    name: "WWE Superstars",
-    abbreviation: "WWE",
-    sport: "Combat Sports",
-    league: "Sports Entertainment",
-    color: "#FFD700",
-    record: "Champions",
-    nextGame: "WrestleMania"
+    record: "Trials Leader",
+    nextGame: "LA 2028"
   }
 ];

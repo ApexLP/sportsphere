@@ -13,64 +13,87 @@ export interface NewsArticle {
 export const mockNews: NewsArticle[] = [
   {
     id: "1",
-    title: "Lakers Secure Dramatic Overtime Victory Against Celtics",
-    summary: "LeBron James scores 41 points in a thrilling overtime win at TD Garden.",
-    imageUrl: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800",
+    title: "USA Crashes Out of World Cup in Stunning Quarterfinal Loss",
+    summary: "Host nation eliminated by Germany in front of record crowd at MetLife Stadium.",
+    imageUrl: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800",
     author: "Michael Johnson",
-    timeAgo: "2 hours ago",
-    sport: "NBA",
+    timeAgo: "1 hour ago",
+    sport: "Soccer",
     isLive: true,
-    fullContent: "In a game that will be remembered as one of the season's best, the Los Angeles Lakers defeated the Boston Celtics 122-118 in overtime at TD Garden. LeBron James turned back the clock with a vintage performance, scoring 41 points, grabbing 9 rebounds, and dishing out 8 assists.\n\nThe game was a back-and-forth affair from the opening tip, with neither team able to build a significant lead. The Celtics, led by Jayson Tatum's 38 points, seemed to have the game in hand with a 7-point lead with just two minutes remaining in regulation.\n\nHowever, the Lakers mounted a furious comeback, with James hitting a contested three-pointer with 8 seconds left to tie the game at 110-110. In overtime, the Lakers' experience showed as they outscored the Celtics 12-8.\n\nAnthony Davis added 28 points and 12 rebounds for the Lakers, while Jaylen Brown contributed 29 points for Boston. The win improves the Lakers' record to 28-13, keeping them in third place in the Western Conference."
+    fullContent: `The United States men's national team has been eliminated from the 2026 FIFA World Cup in a heartbreaking 2-1 quarterfinal defeat to Germany at MetLife Stadium. The host nation, which had captivated the country with its run to the final eight, saw its tournament end before a record crowd of 82,345.
+
+Germany took the lead in the 34th minute through Jamal Musiala, but the Americans equalized just after halftime when Christian Pulisic finished a swift counterattack. The match looked destined for extra time until Thomas Müller scored the winner in the 83rd minute, silencing the home crowd.
+
+For the U.S., the loss marks another painful World Cup exit but also signals genuine progress for a young squad that will co-host again in 2031. Coach Gregg Berhalter praised his team's resilience and pointed to the experience gained as invaluable for the next cycle. Germany advances to face Argentina in the semifinals.`
   },
   {
     id: "2",
-    title: "Chiefs Clinch AFC West Title with Win Over Broncos",
-    summary: "Patrick Mahomes throws 4 TDs as Kansas City dominates division rival.",
-    imageUrl: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800",
-    author: "Sarah Williams",
-    timeAgo: "4 hours ago",
-    sport: "NFL",
-    fullContent: "The Kansas City Chiefs secured their eighth consecutive AFC West division title with a commanding 34-17 victory over the Denver Broncos at Arrowhead Stadium. Patrick Mahomes was in peak form, throwing for 352 yards and four touchdowns.\n\nThe Chiefs' offense was firing on all cylinders, with Travis Kelce catching two touchdown passes and finishing with 122 receiving yards. The defense also stepped up, forcing three turnovers and sacking Broncos quarterback Russell Wilson four times.\n\nThis division title continues the Chiefs' dominance in the AFC West and sets them up nicely for another playoff run. Head coach Andy Reid praised his team's consistency and focus throughout the season."
+    title: "Wimbledon Semifinal Set: Alcaraz to Face Sinner on Centre Court",
+    summary: "Carlos Alcaraz and Jannik Sinner renew their rivalry in the men's semifinal at the All England Club.",
+    imageUrl: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800",
+    author: "Emma Davis",
+    timeAgo: "3 hours ago",
+    sport: "Tennis",
+    fullContent: `Carlos Alcaraz and Jannik Sinner will meet in what is being billed as the most anticipated Wimbledon men's semifinal in years. Alcaraz, the 2023 champion, needed four sets to defeat a resurgent Novak Djokovic in the quarterfinals, while Sinner overcame Taylor Fritz in a five-set thriller.
+
+Their rivalry has quickly become the defining matchup in men's tennis. Alcaraz holds a slight edge in their head-to-head, but Sinner has won three of their last five meetings, including a dramatic five-setter at the Australian Open earlier this year.
+
+The winner will face either Daniil Medvedev or Alex de Minaur in Sunday's final. Both players have avoided major injuries this grass season and appear to be peaking at the right moment.`
   },
   {
     id: "3",
-    title: "Manchester United Stuns Liverpool with Late Winner",
-    summary: "Bruno Fernandes scores in stoppage time to secure crucial three points.",
-    imageUrl: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800",
-    author: "James Thompson",
-    timeAgo: "6 hours ago",
-    sport: "Soccer",
-    fullContent: "Manchester United pulled off a stunning 2-1 victory over Liverpool at Old Trafford, with Bruno Fernandes scoring a dramatic winner in the 94th minute. The Portuguese midfielder's strike sent the home crowd into raptures and dealt a blow to Liverpool's title hopes.\n\nThe match was evenly contested throughout, with Liverpool taking the lead through Mohamed Salah in the 23rd minute. United equalized just before halftime when Marcus Rashford converted from the penalty spot.\n\nThe second half saw both teams create numerous chances, but it looked like the match was heading for a draw until Fernandes' late heroics. The win moves United up to fifth place in the Premier League table."
+    title: "Judge Homerun Spree Powers Yankees Past Red Sox in Summer Showdown",
+    summary: "Aaron Judge hits two home runs as Yankees extend AL East lead at Fenway Park.",
+    imageUrl: "https://images.unsplash.com/photo-1566479179817-0ddb5fa87cd9?w=800",
+    author: "Robert Martinez",
+    timeAgo: "5 hours ago",
+    sport: "Baseball",
+    fullContent: `Aaron Judge continued his torrid July with two home runs and five RBIs, leading the New York Yankees to a 9-5 victory over the Boston Red Sox at Fenway Park. The win extended the Yankees' lead in the AL East to four games and marked their seventh straight series victory.
+
+Judge's first home run, a 453-foot blast over the Green Monster, gave the Yankees an early 3-0 lead. He added a second shot in the seventh inning, becoming the first player to reach 35 home runs this season.
+
+The All-Star Game is just days away, and Judge is widely expected to start in the Midsummer Classic. With the trade deadline approaching, the Yankees are also exploring pitching upgrades to bolster their postseason rotation.`
   },
   {
     id: "4",
-    title: "Djokovic Advances to Australian Open Semifinals",
-    summary: "World No. 1 defeats Alcaraz in four-set thriller at Melbourne Park.",
-    imageUrl: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800",
-    author: "Emma Davis",
-    timeAgo: "8 hours ago",
-    sport: "Tennis",
-    fullContent: "Novak Djokovic continued his quest for a record-extending 11th Australian Open title with a hard-fought 6-4, 4-6, 6-3, 7-5 victory over Carlos Alcaraz in the quarterfinals. The match, lasting over three and a half hours, showcased tennis at its finest.\n\nDjokovic's experience proved crucial in the key moments, particularly in the fourth set where he broke Alcaraz's serve at 5-5 before serving out the match. The Serbian hit 52 winners and saved 8 of 11 break points.\n\nAlcaraz, despite the loss, showed why he's considered the future of tennis with his aggressive baseline play and incredible court coverage. Djokovic will face Daniil Medvedev in the semifinals."
+    title: "Pogacar Takes Yellow Jersey After Dominant Tour de France Mountain Stage",
+    summary: "Slovenian rider seizes overall lead on Stage 8 with brutal attack in the Pyrenees.",
+    imageUrl: "https://images.unsplash.com/photo-1534150174843-8b52f91f9627?w=800",
+    author: "James Thompson",
+    timeAgo: "7 hours ago",
+    sport: "Cycling",
+    fullContent: `Tadej Pogacar claimed the yellow jersey at the Tour de France with a devastating attack on the final climb of Stage 8 in the Pyrenees. The UAE Team Emirates rider dropped defending champion Jonas Vingegaard with five kilometers to go and soloed to the stage win by nearly a minute.
+
+Pogacar now leads Vingegaard by 48 seconds in the general classification, with Remco Evenepel sitting third at 1:22. The stage win was Pogacar's third of this year's Tour and a clear statement of intent as the race heads toward the Alps next week.
+
+Vingegaard, who survived a serious crash earlier this season, fought hard to limit his losses but admitted afterward that Pogacar was simply stronger on the day. The rivalry is shaping up to be the most compelling in recent Tour history.`
   },
   {
     id: "5",
-    title: "Yankees Sign Star Pitcher to Record-Breaking Deal",
-    summary: "Ace pitcher agrees to 10-year, $360 million contract with New York.",
-    imageUrl: "https://images.unsplash.com/photo-1566479179817-0ddb5fa87cd9?w=800",
-    author: "Robert Martinez",
-    timeAgo: "10 hours ago",
-    sport: "MLB",
-    fullContent: "The New York Yankees have made a massive statement of intent by signing star pitcher to a 10-year, $360 million contract, the largest deal ever given to a pitcher in MLB history. The 28-year-old ace had been the most coveted free agent on the market.\n\nLast season, he posted a 2.43 ERA with 243 strikeouts over 198 innings, finishing second in Cy Young Award voting. His addition to the Yankees rotation alongside Gerrit Cole creates one of the most formidable one-two punches in baseball.\n\nYankees General Manager Brian Cashman called it 'a franchise-defining moment' and expressed confidence that this signing puts the team in position to compete for multiple championships over the next decade."
+    title: "Verstappen on Pole for British Grand Prix at Silverstone",
+    summary: "Red Bull driver edges Hamilton and Leclerc in qualifying thriller at home race.",
+    imageUrl: "https://images.unsplash.com/photo-1504280506541-aca063246d74?w=800",
+    author: "Sarah Williams",
+    timeAgo: "9 hours ago",
+    sport: "Motor Racing",
+    fullContent: `Max Verstappen secured pole position for the British Grand Prix at Silverstone, narrowly beating Lewis Hamilton and Charles Leclerc in a rain-affected qualifying session. The Dutchman set his fastest lap on the final run just as the track began to dry.
+
+Hamilton, racing at his home circuit, will start second, giving the British crowd hope of a first home winner since 2021. Ferrari's Leclerc qualified third, while McLaren's Lando Norris and Oscar Piastri locked out the second row.
+
+The race is expected to feature mixed weather conditions, with teams uncertain whether to gamble on slick or intermediate tires. Verstappen enters the weekend with a 42-point championship lead over Norris.`
   },
   {
     id: "6",
-    title: "Warriors' Curry Hits 500th Career Three-Pointer This Season",
-    summary: "Stephen Curry reaches milestone in win over Sacramento Kings.",
-    imageUrl: "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?w=800",
+    title: "UFC 316: Makhachev vs Tsarukyan Lightweight Title Rematch Set",
+    summary: "Champion and challenger face off again in highly anticipated five-round main event.",
+    imageUrl: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=800",
     author: "Lisa Anderson",
     timeAgo: "12 hours ago",
-    sport: "NBA",
-    isLive: false,
-    fullContent: "Stephen Curry added another milestone to his legendary career, hitting his 500th three-pointer of the season in the Golden State Warriors' 126-114 victory over the Sacramento Kings. Curry finished with 33 points, including 7 three-pointers.\n\nThis marks the third time in his career that Curry has reached 500 threes in a season, a feat no other player has accomplished even once. The two-time MVP continues to redefine what's possible from beyond the arc.\n\nWarriors head coach Steve Kerr praised Curry's consistency and work ethic, noting that even at 35 years old, Curry continues to elevate his game. The win keeps the Warriors in the playoff hunt in the competitive Western Conference."
+    sport: "Combat Sports",
+    fullContent: `Islam Makhachev will defend his UFC lightweight title against Arman Tsarukyan in the main event of UFC 316, a rematch of their razor-close 2019 bout. The fight headlines a stacked card in Las Vegas that also features a women's bantamweight title fight and several top-ten matchups.
+
+Makhachev has been nearly unstoppable since capturing the title, with dominant wins over Alexander Volkanovski, Dustin Poirier, and Justin Gaethje. Tsarukyan, meanwhile, has emerged as the division's most dangerous challenger, blending explosive wrestling with improving striking.
+
+Analysts are divided on whether Tsarukyan's youth and athleticism can overcome Makhachev's experience and suffocating grappling. The winner is likely to face the rising Charles Oliveira next.`
   }
 ];

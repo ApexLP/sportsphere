@@ -11,81 +11,83 @@ export interface TrendingTopic {
 export const trendingTopics: TrendingTopic[] = [
   {
     id: "1",
-    hashtag: "#LakersWin",
-    tweetCount: "125K",
-    category: "NBA",
-    description: "Lakers overtime victory against Celtics has fans celebrating LeBron's vintage performance",
+    hashtag: "#WorldCup2026",
+    tweetCount: "2.4M",
+    category: "Soccer",
+    description: "USA eliminated by Germany in quarterfinals as tournament reaches final weekend",
     isLive: true,
     relatedNews: ["1"]
   },
   {
     id: "2",
-    hashtag: "#ChiefsKingdom",
-    tweetCount: "89.2K",
-    category: "NFL",
-    description: "Chiefs clinch 8th straight AFC West title, Mahomes throws 4 TDs",
+    hashtag: "#Wimbledon",
+    tweetCount: "856K",
+    category: "Tennis",
+    description: "Alcaraz vs Sinner semifinal headlines Centre Court Friday action",
+    isLive: true,
     relatedNews: ["2"]
   },
   {
     id: "3",
-    hashtag: "#MUFC",
-    tweetCount: "234K",
-    category: "Soccer",
-    description: "Bruno Fernandes' stoppage time winner sends Old Trafford into frenzy",
+    hashtag: "#TourdeFrance",
+    tweetCount: "412K",
+    category: "Cycling",
+    description: "Pogacar takes yellow jersey after dominant Pyrenean mountain stage",
     isLive: true,
-    relatedNews: ["3"]
-  },
-  {
-    id: "4",
-    hashtag: "#AusOpen",
-    tweetCount: "156K",
-    category: "Tennis",
-    description: "Djokovic defeats Alcaraz in epic quarterfinal battle",
     relatedNews: ["4"]
   },
   {
+    id: "4",
+    hashtag: "#BritishGP",
+    tweetCount: "389K",
+    category: "Motor Racing",
+    description: "Verstappen on pole at Silverstone with Hamilton second in front of home crowd",
+    relatedNews: ["5"]
+  },
+  {
     id: "5",
-    hashtag: "#TransferNews",
-    tweetCount: "445K",
-    category: "Soccer",
-    description: "Breaking: Real Madrid reportedly close to signing Mbappé",
+    hashtag: "#TheOpen",
+    tweetCount: "267K",
+    category: "Golf",
+    description: "McIlroy and Scheffler headline final groups at Royal Liverpool",
     isLive: true
   },
   {
     id: "6",
-    hashtag: "#SuperBowlLVIII",
-    tweetCount: "312K",
-    category: "NFL",
-    description: "Early predictions and matchup analysis trending ahead of playoffs"
-  },
-  {
-    id: "7",
-    hashtag: "#Curry500",
-    tweetCount: "67.8K",
-    category: "NBA",
-    description: "Steph Curry hits 500th three-pointer of the season, historic achievement",
+    hashtag: "#UFC316",
+    tweetCount: "334K",
+    category: "Combat Sports",
+    description: "Makhachev vs Tsarukyan lightweight title rematch sold out in Las Vegas",
     relatedNews: ["6"]
   },
   {
-    id: "8",
-    hashtag: "#F1Testing",
+    id: "7",
+    hashtag: "#MLBAllStar",
     tweetCount: "198K",
-    category: "F1",
-    description: "Pre-season testing reveals surprising pace from Mercedes"
+    category: "Baseball",
+    description: "Final roster spots announced ahead of Midsummer Classic in Atlanta",
+    relatedNews: ["3"]
+  },
+  {
+    id: "8",
+    hashtag: "#RugbyChampionship",
+    tweetCount: "156K",
+    category: "Rugby",
+    description: "Springboks defeat All Blacks in opening round of southern hemisphere championship",
+    relatedNews: ["5"]
   },
   {
     id: "9",
-    hashtag: "#MarchMadness",
-    tweetCount: "523K",
-    category: "NCAA",
-    description: "Bracket predictions and Cinderella teams dominating discussions"
+    hashtag: "#LA2028",
+    tweetCount: "124K",
+    category: "Olympic Sports",
+    description: "Two years until Los Angeles Olympics as athletes prepare for qualifying cycles"
   },
   {
     id: "10",
-    hashtag: "#UFCFightNight",
-    tweetCount: "276K",
-    category: "MMA",
-    description: "Main event knockout has fight fans debating pound-for-pound rankings",
-    isLive: true
+    hashtag: "#SummerLeague",
+    tweetCount: "178K",
+    category: "Basketball",
+    description: "NBA Summer League in Las Vegas showcases rookies and prospects"
   }
 ];
