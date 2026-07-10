@@ -29,7 +29,7 @@ interface TicketEvent {
   date: string;
   venue: string;
   price: number;
-  category: 'soccer' | 'tennis' | 'cycling' | 'golf' | 'rugby' | 'motor racing' | 'combat sports' | 'boxing' | 'olympic sports' | 'nfl' | 'ncaa football' | 'ncaa basketball' | 'ncaa wrestling' | 'ncaa track' | 'baseball' | 'basketball';
+  category: 'soccer' | 'tennis' | 'cycling' | 'golf' | 'rugby' | 'motor racing' | 'combat sports' | 'boxing' | 'olympic sports' | 'nfl' | 'ncaa football' | 'ncaa basketball' | 'ncaa wrestling' | 'ncaa track' | 'nhl hockey' | 'horse racing' | 'cricket' | 'baseball' | 'basketball';
   image: string;
   available: boolean;
 }
@@ -155,6 +155,36 @@ const merchandiseData: MerchandiseItem[] = [
     rating: 4.9,
     inStock: false,
   },
+  {
+    id: '13',
+    name: 'Panthers Stanley Cup Champions Jersey',
+    price: 89.99,
+    image: 'https://images.unsplash.com/photo-1518607692857-409f29b9e36f?w=300&h=300&fit=crop',
+    category: 'jersey',
+    team: 'Florida Panthers',
+    rating: 4.8,
+    inStock: true,
+  },
+  {
+    id: '14',
+    name: 'Saratoga Race Course Cap',
+    price: 29.99,
+    image: 'https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=300&h=300&fit=crop',
+    category: 'hat',
+    team: 'Horse Racing',
+    rating: 4.5,
+    inStock: true,
+  },
+  {
+    id: '15',
+    name: 'India Cricket Team ODI Jersey',
+    price: 69.99,
+    image: 'https://images.unsplash.com/photo-1531415207412-1ce692919f53?w=300&h=300&fit=crop',
+    category: 'jersey',
+    team: 'India Cricket',
+    rating: 4.9,
+    inStock: true,
+  },
 ];
 
 const ticketData: TicketEvent[] = [
@@ -277,6 +307,36 @@ const ticketData: TicketEvent[] = [
     category: 'ncaa track',
     image: 'https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=400&h=200&fit=crop',
     available: false,
+  },
+  {
+    id: '13',
+    title: 'Panthers Season Opener - Banner Night',
+    date: '2026-10-10',
+    venue: 'Amerant Bank Arena, FL',
+    price: 120.00,
+    category: 'nhl hockey',
+    image: 'https://images.unsplash.com/photo-1518607692857-409f29b9e36f?w=400&h=200&fit=crop',
+    available: true,
+  },
+  {
+    id: '14',
+    title: 'Travers Stakes - Saratoga',
+    date: '2026-08-24',
+    venue: 'Saratoga Race Course, NY',
+    price: 75.00,
+    category: 'horse racing',
+    image: 'https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=400&h=200&fit=crop',
+    available: true,
+  },
+  {
+    id: '15',
+    title: 'India vs England Test Match - Day 4',
+    date: '2026-07-11',
+    venue: "Lord's Cricket Ground, London",
+    price: 110.00,
+    category: 'cricket',
+    image: 'https://images.unsplash.com/photo-1531415207412-1ce692919f53?w=400&h=200&fit=crop',
+    available: true,
   },
 ];
 

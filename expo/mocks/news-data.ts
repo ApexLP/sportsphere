@@ -182,6 +182,49 @@ LSU's women's team claimed their national title earlier in the week, led by a re
   },
   {
     id: "13",
+    title: "Panthers Raise Stanley Cup as NHL Free Agency Heats Up",
+    summary: "Florida celebrates second straight championship while stars switch teams in busy offseason.",
+    imageUrl: "https://images.unsplash.com/photo-1518607692857-409f29b9e36f?w=800",
+    author: "Steve Morrison",
+    timeAgo: "1 day ago",
+    sport: "NHL Hockey",
+    fullContent: `The Florida Panthers celebrated their second consecutive Stanley Cup with a parade down Las Olas Boulevard, but the party is already giving way to a frantic free agency period. Several big-name players have changed teams as the NHL's salary cap saw its largest increase in years.
+
+The Edmonton Oilers, who fell to the Panthers in a six-game Final, have retooled their defense and added a veteran goaltender. The Dallas Stars made the biggest splash, signing a former 50-goal scorer to a long-term deal.
+
+The 2026-27 NHL regular season begins in October, with the Panthers raising their championship banner on opening night.`
+  },
+  {
+    id: "14",
+    title: "Dornoch Targets Travers Stakes After Belmont Stakes Triumph",
+    summary: "Belmont winner headlines summer racing schedule at Saratoga this August.",
+    imageUrl: "https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=800",
+    author: "Patricia Greene",
+    timeAgo: "1 day ago",
+    sport: "Horse Racing",
+    fullContent: `Dornoch, winner of the Belmont Stakes, is the early favorite for the Travers Stakes at Saratoga Race Course on August 24. Trainer Danny Gargan has confirmed the colt will bypass the Haskell Stakes to focus on the "Midsummer Derby," a key prep for the Breeders' Cup Classic.
+
+Seize the Grey, who won the Preakness Stakes, is also pointing toward the Travers, setting up a rare showdown between two Triple Crown race winners. Mystik Dan, the Kentucky Derby winner, is uncertain for the race after a minor training setback.
+
+Saratoga's summer meet has already seen record handle figures, with racing fans flocking to the historic upstate New York track for its 150th anniversary season.`
+  },
+  {
+    id: "15",
+    title: "India vs England Test Series Live: Hosts Dominate Day 3 at Lord's",
+    summary: "India builds massive lead as England's batting order collapses on Day 3.",
+    imageUrl: "https://images.unsplash.com/photo-1531415207412-1ce692919f53?w=800",
+    author: "Raj Patel",
+    timeAgo: "3 hours ago",
+    sport: "Cricket",
+    isLive: true,
+    fullContent: `India has taken firm control of the second Test against England at Lord's, building a lead of over 150 runs by stumps on Day 3. England's batting lineup collapsed in the afternoon session, losing six wickets for just 89 runs as India's spin attack ran riot on a deteriorating pitch.
+
+Jasprit Bumrah was the pick of the bowlers, taking 4 for 42 in England's first innings. Rishabh Pant's aggressive 87 off 94 balls earlier in the day had given India a crucial first-innings lead, and the visitors extended their advantage in the evening session with an unbroken century partnership.
+
+England captain Ben Stokes acknowledged the team's batting was "not good enough" and pointed to the need for a big second-innings effort. India leads the five-match series 1-0 after winning the opener at Headingley.`
+  },
+  {
+    id: "16",
     title: "OKC Thunder Win First NBA Title, Dominate Pacers in Summer League Tune-Up",
     summary: "Fresh off their championship run, the Thunder's young core shines in Las Vegas Summer League.",
     imageUrl: "https://images.unsplash.com/photo-1546519638-29e946c5b7df?w=800",

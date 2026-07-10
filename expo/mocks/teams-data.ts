@@ -414,6 +414,89 @@ export const mockTeams: Team[] = [
     record: "NCAA Runner-Up",
     nextGame: "Outdoor Finals"
   },
+  // NHL Hockey
+  {
+    id: "Florida Panthers",
+    name: "Florida Panthers",
+    abbreviation: "FLA",
+    sport: "NHL Hockey",
+    league: "NHL",
+    color: "#C8102E",
+    record: "Stanley Cup Champs",
+    nextGame: "Season Prep"
+  },
+  {
+    id: "Edmonton Oilers",
+    name: "Edmonton Oilers",
+    abbreviation: "EDM",
+    sport: "NHL Hockey",
+    league: "NHL",
+    color: "#041E42",
+    record: "Cup Finalist",
+    nextGame: "Season Prep"
+  },
+  {
+    id: "Dallas Stars",
+    name: "Dallas Stars",
+    abbreviation: "DAL",
+    sport: "NHL Hockey",
+    league: "NHL",
+    color: "#006847",
+    record: "Conf Finals",
+    nextGame: "Season Prep"
+  },
+  // Horse Racing
+  {
+    id: "Dornoch",
+    name: "Dornoch",
+    abbreviation: "DN",
+    sport: "Horse Racing",
+    league: "Triple Crown",
+    color: "#8B4513",
+    record: "Belmont Winner",
+    nextGame: "Travers Stakes"
+  },
+  {
+    id: "Seize the Grey",
+    name: "Seize the Grey",
+    abbreviation: "SG",
+    sport: "Horse Racing",
+    league: "Triple Crown",
+    color: "#708090",
+    record: "Preakness Winner",
+    nextGame: "Travers Stakes"
+  },
+  // Cricket
+  {
+    id: "India Cricket",
+    name: "India Cricket",
+    abbreviation: "IND",
+    sport: "Cricket",
+    league: "ICC",
+    color: "#438BCC",
+    record: "World #1",
+    nextGame: "vs ENG"
+  },
+  {
+    id: "Australia Cricket",
+    name: "Australia Cricket",
+    abbreviation: "AUS",
+    sport: "Cricket",
+    league: "ICC",
+    color: "#FFD700",
+    record: "World #2",
+    nextGame: "@ IND"
+  },
+  {
+    id: "England Cricket",
+    name: "England Cricket",
+    abbreviation: "ENG",
+    sport: "Cricket",
+    league: "ICC",
+    color: "#1E3A8A",
+    record: "World #3",
+    nextGame: "vs IND"
+  },
   // Baseball / MLB (above NBA)
   {
     id: "New York Yankees",

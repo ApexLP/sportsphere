@@ -19,7 +19,7 @@ export default function TrendingScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories = ['All', 'Soccer', 'Tennis', 'Cycling', 'Golf', 'Rugby', 'Motor Racing', 'Combat Sports', 'Boxing', 'NFL', 'NCAA Football', 'NCAA Basketball', 'NCAA Wrestling', 'NCAA Track', 'Baseball', 'Basketball'];
+  const categories = ['All', 'Soccer', 'Tennis', 'Cycling', 'Golf', 'Rugby', 'Motor Racing', 'Combat Sports', 'Boxing', 'NFL', 'NCAA Football', 'NCAA Basketball', 'NCAA Wrestling', 'NCAA Track', 'NHL Hockey', 'Horse Racing', 'Cricket', 'Baseball', 'Basketball'];
 
   const filteredTopics = selectedCategory === 'All' 
     ? trendingTopics 

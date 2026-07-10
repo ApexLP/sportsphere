@@ -118,6 +118,31 @@ export const trendingTopics: TrendingTopic[] = [
   },
   {
     id: "14",
+    hashtag: "#StanleyCup",
+    tweetCount: "312K",
+    category: "NHL Hockey",
+    description: "Panthers celebrate back-to-back championships as NHL free agency reshapes the league",
+    relatedNews: ["13"]
+  },
+  {
+    id: "15",
+    hashtag: "#TraversStakes",
+    tweetCount: "98K",
+    category: "Horse Racing",
+    description: "Dornoch and Seize the Grey set for Saratoga showdown in the Midsummer Derby",
+    relatedNews: ["14"]
+  },
+  {
+    id: "16",
+    hashtag: "#IndvsEng",
+    tweetCount: "1.8M",
+    category: "Cricket",
+    description: "India dominates Day 3 at Lord's as England batting collapses in second Test",
+    isLive: true,
+    relatedNews: ["15"]
+  },
+  {
+    id: "17",
     hashtag: "#MLBAllStar",
     tweetCount: "198K",
     category: "Baseball",
@@ -125,16 +150,16 @@ export const trendingTopics: TrendingTopic[] = [
     relatedNews: ["3"]
   },
   {
-    id: "15",
+    id: "18",
     hashtag: "#NBASummerLeague",
     tweetCount: "178K",
     category: "Basketball",
     description: "Thunder's young core shines in Las Vegas after first NBA championship",
     isLive: true,
-    relatedNews: ["13"]
+    relatedNews: ["16"]
   },
   {
-    id: "16",
+    id: "19",
     hashtag: "#LA2028",
     tweetCount: "124K",
     category: "Olympic Sports",
