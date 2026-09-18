@@ -6,36 +6,75 @@ import {
   ScrollView,
   TouchableOpacity,
   RefreshControl,
+  Alert,
 } from "react-native";
-import { Activity, Clock, Users, Heart } from "lucide-react-native";
-import { mockLiveScores, LiveScore } from "@/mocks/live-scores";
+import { Activity, Clock, Users, Heart, MoreVertical, ChevronUp, ChevronDown } from "lucide-react-native";
+import { router } from "expo-router";
+import { mockLiveScores, mockLeaderboardEvents, LiveScore, LeaderboardEvent } from "@/mocks/live-scores";
 import { useFavorites } from "@/hooks/favorites-context";
 import { useTheme } from "@/hooks/theme-context";
+import { useF1Live } from "@/hooks/use-f1-live";
+import { useLiveScores, LIVE_COVERED_SPORTS } from "@/hooks/use-live-scores";
+import { useReorder } from "@/hooks/reorder-context";
+import LeaderboardCard from "@/components/LeaderboardCard";
+
+type FeedItem = LiveScore | LeaderboardEvent;
+
+function isLeaderboardItem(item: FeedItem): item is LeaderboardEvent {
+  return "entries" in item;
+}
+
+function itemHasFavorite(item: FeedItem, isFavorite: (name: string) => boolean): boolean {
+  if (isLeaderboardItem(item)) {
+    return item.entries.some(e => isFavorite(e.name));
+  }
+  return isFavorite(item.homeTeam) || isFavorite(item.awayTeam);
+}
+
+function itemTitle(item: FeedItem): string {
+  return isLeaderboardItem(item) ? item.eventName : `${item.homeTeam} vs ${item.awayTeam}`;
+}
 
 export default function LiveScreen() {
   const { colors } = useTheme();
   const [refreshing, setRefreshing] = useState(false);
   const [scores, setScores] = useState(mockLiveScores);
+  const [leaderboardEvents, setLeaderboardEvents] = useState(mockLeaderboardEvents);
   const [selectedSport, setSelectedSport] = useState("all");
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { orderedIds, setOrder } = useReorder();
+
+  const f1Live = useF1Live();
+
+  useEffect(() => {
+    if (f1Live.driverStandingsEvent || f1Live.raceResultEvent) {
+      setLeaderboardEvents(prevEvents => {
+        const untouched = prevEvents.filter(
+          e => e.id !== "f1-driver-standings" && e.id !== "f1-last-race-result"
+        );
+        const live = [f1Live.driverStandingsEvent, f1Live.raceResultEvent].filter(
+          (e): e is LeaderboardEvent => e !== null
+        );
+        return [...live, ...untouched];
+      });
+    }
+  }, [f1Live.driverStandingsEvent, f1Live.raceResultEvent]);
+
+  const { scores: liveEspnScores, loading: liveEspnLoading } = useLiveScores();
+
+  useEffect(() => {
+    if (!liveEspnLoading && liveEspnScores.length > 0) {
+      setScores(prevScores => {
+        const untouched = mockLiveScores.filter(s => !LIVE_COVERED_SPORTS.includes(s.sport));
+        return [...liveEspnScores, ...untouched];
+      });
+    }
+  }, [liveEspnLoading, liveEspnScores]);
 
   const sports = ["all", "soccer", "tennis", "cycling", "golf", "rugby", "motor racing", "combat sports", "boxing", "olympic sports", "nfl", "ncaa football", "ncaa basketball", "ncaa wrestling", "ncaa track", "nhl hockey", "horse racing", "cricket", "baseball", "basketball"];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScores(prevScores => 
-        prevScores.map(score => ({
-          ...score,
-          homeScore: score.status === "LIVE" ? score.homeScore + Math.floor(Math.random() * 2) : score.homeScore,
-          awayScore: score.status === "LIVE" ? score.awayScore + Math.floor(Math.random() * 2) : score.awayScore,
-          time: score.status === "LIVE" ? `${Math.floor(Math.random() * 90)}'` : score.time,
-        }))
-      );
-    }, 30000);
 
-    return () => clearInterval(interval);
-  }, []);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -44,46 +83,110 @@ export default function LiveScreen() {
     }, 2000);
   }, []);
 
+  const allItems: FeedItem[] = [...scores, ...leaderboardEvents];
+
   let filteredScores = selectedSport === "all"
-    ? scores
-    : scores.filter(score => score.sport.toLowerCase() === selectedSport);
+    ? allItems
+    : allItems.filter(item => item.sport.toLowerCase() === selectedSport);
 
   if (showFavoritesOnly) {
-    filteredScores = filteredScores.filter(score => 
-      isFavorite(score.homeTeam) || isFavorite(score.awayTeam)
-    );
+    filteredScores = filteredScores.filter(item => itemHasFavorite(item, isFavorite));
   }
 
-  // Sort to show favorite games first
+  // Global manual order: previously saved order first, then any new ids in their natural order
+  const globalOrder = orderedIds.length > 0
+    ? [...orderedIds.filter(id => allItems.some(s => s.id === id)), ...allItems.filter(s => !orderedIds.includes(s.id)).map(s => s.id)]
+    : allItems.map(s => s.id);
+
+  const orderIndex = (id: string) => {
+    const idx = globalOrder.indexOf(id);
+    return idx === -1 ? globalOrder.length : idx;
+  };
+
+  // Sort to show favorite games first, then respect manual order within each group
   filteredScores = filteredScores.sort((a, b) => {
-    const aHasFavorite = isFavorite(a.homeTeam) || isFavorite(a.awayTeam);
-    const bHasFavorite = isFavorite(b.homeTeam) || isFavorite(b.awayTeam);
-    
+    const aHasFavorite = itemHasFavorite(a, isFavorite);
+    const bHasFavorite = itemHasFavorite(b, isFavorite);
+
     if (aHasFavorite && !bHasFavorite) return -1;
     if (!aHasFavorite && bHasFavorite) return 1;
-    return 0;
+    return orderIndex(a.id) - orderIndex(b.id);
   });
 
   const liveGames = filteredScores.filter(s => s.status === "LIVE");
   const upcomingGames = filteredScores.filter(s => s.status === "UPCOMING");
   const finishedGames = filteredScores.filter(s => s.status === "FINISHED");
 
-  const renderScoreCard = (score: LiveScore) => {
+  const moveScore = (list: FeedItem[], id: string, direction: -1 | 1) => {
+    const idx = list.findIndex(s => s.id === id);
+    const targetIdx = idx + direction;
+    if (idx === -1 || targetIdx < 0 || targetIdx >= list.length) return;
+
+    const otherId = list[targetIdx].id;
+    const newGlobalOrder = [...globalOrder];
+    const aPos = newGlobalOrder.indexOf(id);
+    const bPos = newGlobalOrder.indexOf(otherId);
+    [newGlobalOrder[aPos], newGlobalOrder[bPos]] = [newGlobalOrder[bPos], newGlobalOrder[aPos]];
+    setOrder(newGlobalOrder);
+  };
+
+  const showMoveMenu = (list: FeedItem[], item: FeedItem, index: number) => {
+    const buttons = [];
+    if (index > 0) {
+      buttons.push({ text: "Move Up", onPress: () => moveScore(list, item.id, -1 as const) });
+    }
+    if (index < list.length - 1) {
+      buttons.push({ text: "Move Down", onPress: () => moveScore(list, item.id, 1 as const) });
+    }
+    buttons.push({ text: "Cancel", style: "cancel" as const });
+
+    Alert.alert(itemTitle(item), "Move this game", buttons);
+  };
+
+  const renderReorderColumn = (item: FeedItem, index: number, list: FeedItem[]) => (
+    <View style={[styles.reorderColumn, { backgroundColor: colors.surface }]}>
+      <TouchableOpacity
+        onPress={() => moveScore(list, item.id, -1)}
+        disabled={index === 0}
+        style={styles.reorderButton}
+      >
+        <ChevronUp size={16} color={index === 0 ? colors.border : colors.textSecondary} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => showMoveMenu(list, item, index)}
+        style={styles.reorderButton}
+        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+      >
+        <MoreVertical size={14} color={colors.textSecondary} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => moveScore(list, item.id, 1)}
+        disabled={index === list.length - 1}
+        style={styles.reorderButton}
+      >
+        <ChevronDown size={16} color={index === list.length - 1 ? colors.border : colors.textSecondary} />
+      </TouchableOpacity>
+    </View>
+  );
+
+  const renderScoreCard = (score: LiveScore, index: number, list: FeedItem[]) => {
     const isHomeTeamFavorite = isFavorite(score.homeTeam);
     const isAwayTeamFavorite = isFavorite(score.awayTeam);
     const hasFavoriteTeam = isHomeTeamFavorite || isAwayTeamFavorite;
-    
+
     return (
-    <TouchableOpacity 
-      key={score.id} 
-      style={[
-        styles.scoreCard,
-        { backgroundColor: colors.surface },
-        hasFavoriteTeam && styles.favoriteCard,
-        hasFavoriteTeam && { borderColor: colors.darkOrange }
-      ]} 
-      activeOpacity={0.9}
-    >
+    <View key={score.id} style={styles.cardRow}>
+      {renderReorderColumn(score, index, list)}
+      <TouchableOpacity
+        style={[
+          styles.scoreCard,
+          { backgroundColor: colors.surface },
+          hasFavoriteTeam && styles.favoriteCard,
+          hasFavoriteTeam && { borderColor: colors.darkOrange }
+        ]}
+        activeOpacity={0.9}
+        onPress={() => router.push({ pathname: "/game/[id]", params: { id: score.id, data: JSON.stringify(score) } })}
+      >
       <View style={styles.scoreHeader}>
         <Text style={[styles.league, { color: colors.textSecondary }]}>{score.league}</Text>
         {score.status === "LIVE" && (
@@ -201,9 +304,25 @@ export default function LiveScreen() {
           <Text style={[styles.finishedText, { color: colors.textSecondary }]}>FINAL</Text>
         </View>
       )}
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
     );
   };
+
+  const renderLeaderboardCard = (event: LeaderboardEvent, index: number, list: FeedItem[]) => (
+    <View key={event.id} style={styles.cardRow}>
+      {renderReorderColumn(event, index, list)}
+      <LeaderboardCard
+        event={event}
+        onPress={() => router.push({ pathname: "/leaderboard/[id]", params: { id: event.id, data: JSON.stringify(event) } })}
+      />
+    </View>
+  );
+
+  const renderItem = (item: FeedItem, index: number, list: FeedItem[]) =>
+    isLeaderboardItem(item)
+      ? renderLeaderboardCard(item, index, list)
+      : renderScoreCard(item, index, list);
 
   return (
     <ScrollView
@@ -274,7 +393,7 @@ export default function LiveScreen() {
             </View>
           </View>
           <View style={styles.scoresGrid}>
-            {liveGames.map(renderScoreCard)}
+            {liveGames.map((item, index) => renderItem(item, index, liveGames))}
           </View>
         </>
       )}
@@ -287,7 +406,7 @@ export default function LiveScreen() {
             <Text style={[styles.sectionTitle, { color: colors.text }]}>Upcoming</Text>
           </View>
           <View style={styles.scoresGrid}>
-            {upcomingGames.map(renderScoreCard)}
+            {upcomingGames.map((item, index) => renderItem(item, index, upcomingGames))}
           </View>
         </>
       )}
@@ -299,7 +418,7 @@ export default function LiveScreen() {
             <Text style={[styles.sectionTitle, { color: colors.text }]}>Finished</Text>
           </View>
           <View style={styles.scoresGrid}>
-            {finishedGames.map(renderScoreCard)}
+            {finishedGames.map((item, index) => renderItem(item, index, finishedGames))}
           </View>
         </>
       )}
@@ -399,11 +518,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     gap: 12,
   },
+  cardRow: {
+    flexDirection: "row",
+    alignItems: "stretch",
+    gap: 8,
+  },
+  reorderColumn: {
+    width: 28,
+    borderRadius: 12,
+    paddingVertical: 8,
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  reorderButton: {
+    padding: 4,
+  },
   scoreCard: {
+    flex: 1,
     backgroundColor: "#1E293B",
     borderRadius: 12,
     padding: 16,
-    marginBottom: 12,
     elevation: 2,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
