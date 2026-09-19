@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { Newspaper, Activity, Heart, User, TrendingUp, ShoppingBag } from "lucide-react-native";
+import { Newspaper, Activity, Heart, User, TrendingUp } from "lucide-react-native";
 import React from "react";
 import { useTheme } from "@/hooks/theme-context";
 import { View, Image, StyleSheet } from "react-native";
@@ -70,14 +70,6 @@ export default function TabLayout() {
           title: "My Teams",
           tabBarLabel: "Favorites",
           tabBarIcon: ({ color }) => <Heart size={24} color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="shop"
-        options={{
-          title: "Shop",
-          tabBarLabel: "Shop",
-          tabBarIcon: ({ color }) => <ShoppingBag size={24} color={color} />,
         }}
       />
       <Tabs.Screen

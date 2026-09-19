@@ -69,7 +69,7 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#RugbyChampionship",
     tweetCount: "156K",
     category: "Rugby",
-    description: "Springboks defeat All Blacks in opening round of southern hemisphere championship"
+    description: "Springboks edge All Blacks as the title race tightens late in the championship"
   },
   {
     id: "9",
@@ -85,7 +85,7 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#CFB2026",
     tweetCount: "201K",
     category: "NCAA Football",
-    description: "Georgia tops preseason AP poll with Carson Beck returning at quarterback",
+    description: "Georgia stays unbeaten and #1 as SEC play opens this weekend",
     relatedNews: ["9"]
   },
   {
@@ -109,15 +109,15 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#NCAATrack",
     tweetCount: "76K",
     category: "NCAA Track",
-    description: "USC shatters collegiate 4x400 relay record at outdoor championships",
+    description: "USC's record-breaking 4x400 relay from June still the outdoor season's signature moment",
     relatedNews: ["12"]
   },
   {
     id: "14",
-    hashtag: "#StanleyCup",
+    hashtag: "#NHLTrainingCamp",
     tweetCount: "312K",
     category: "NHL Hockey",
-    description: "Panthers celebrate back-to-back championships as NHL free agency reshapes the league",
+    description: "Panthers open camp as back-to-back champs with October opener on the horizon",
     relatedNews: ["13"]
   },
   {
@@ -130,10 +130,11 @@ export const trendingTopics: TrendingTopic[] = [
   },
   {
     id: "17",
-    hashtag: "#MLBAllStar",
+    hashtag: "#MLBPlayoffRace",
     tweetCount: "198K",
     category: "Baseball",
-    description: "Final roster spots announced ahead of Midsummer Classic in Atlanta",
+    description: "Judge and the Yankees battling for the AL East crown with two weeks to go",
+    isLive: true,
     relatedNews: ["3"]
   },
   {

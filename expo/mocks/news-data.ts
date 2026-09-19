@@ -41,17 +41,18 @@ The winner will face either Daniil Medvedev or Alex de Minaur in Sunday's final.
   },
   {
     id: "3",
-    title: "Judge Homerun Spree Powers Yankees Past Red Sox in Summer Showdown",
-    summary: "Aaron Judge hits two home runs as Yankees extend AL East lead at Fenway Park.",
+    title: "Judge Keeps Mashing as Yankees Push for AL East Crown Down the Stretch",
+    summary: "Aaron Judge hits two home runs as Yankees extend their lead with two weeks left in the season.",
     imageUrl: "https://images.unsplash.com/photo-1566479179817-0ddb5fa87cd9?w=800",
     author: "Robert Martinez",
     timeAgo: "5 hours ago",
     sport: "Baseball",
-    fullContent: `Aaron Judge continued his torrid July with two home runs and five RBIs, leading the New York Yankees to a 9-5 victory over the Boston Red Sox at Fenway Park. The win extended the Yankees' lead in the AL East to four games and marked their seventh straight series victory.
+    isLive: true,
+    fullContent: `Aaron Judge continued his MVP-caliber season with two home runs and five RBIs, leading the New York Yankees to a win over the Boston Red Sox at Fenway Park in a pivotal late-season series. The win extended the Yankees' lead in the AL East with just two weeks left in the regular season.
 
-Judge's first home run, a 453-foot blast over the Green Monster, gave the Yankees an early 3-0 lead. He added a second shot in the seventh inning, becoming the first player to reach 35 home runs this season.
+Judge's first home run, a 453-foot blast over the Green Monster, gave the Yankees an early lead. He added a second shot in the seventh inning, pushing his season total into the high 50s and keeping him in the thick of the MVP race.
 
-The All-Star Game is just days away, and Judge is widely expected to start in the Midsummer Classic. With the trade deadline approaching, the Yankees are also exploring pitching upgrades to bolster their postseason rotation.`
+With the postseason picture coming into focus, the Yankees are turning their attention to setting their playoff rotation. Boston, fading in the Wild Card race, needs to sweep the series to stay alive.`
   },
   {
     id: "4",
@@ -126,17 +127,17 @@ Head coach Andy Reid downplayed the hot start, saying the team is focused on win
   },
   {
     id: "9",
-    title: "Georgia Tops Preseason College Football Rankings for 2026 Season",
-    summary: "Bulldogs lead the way with Carson Beck returning at quarterback for title run.",
+    title: "Georgia Holds Steady Atop AP Top 25 Through Three Weeks",
+    summary: "Bulldogs remain unbeaten as Carson Beck's senior season builds toward a playoff run.",
     imageUrl: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=800",
     author: "Mark Sullivan",
     timeAgo: "20 hours ago",
     sport: "NCAA Football",
-    fullContent: `The Georgia Bulldogs sit atop the preseason AP Top 25 poll for the 2026 college football season, with quarterback Carson Beck returning for his senior year after throwing for over 4,000 yards last season. Head coach Kirby Smart has reloaded on defense with the nation's top recruiting class.
+    fullContent: `The Georgia Bulldogs have held onto the top spot in the AP Top 25 through three weeks of the 2026 college football season, with quarterback Carson Beck picking up where he left off after opening the year with a win over Clemson in Atlanta. Head coach Kirby Smart's reloaded defense has yet to allow more than 14 points in a game.
 
-Ohio State, Michigan, Texas, and Oregon round out the top five. The expanded 12-team playoff format returns for its second year, giving more programs a path to the national championship game.
+Ohio State, Michigan, Texas, and Oregon round out the top five, with Ohio State surviving a Week 2 scare against Notre Dame. The expanded 12-team playoff format returns for its second year, giving more programs a path to the national championship game.
 
-The season opens September 5 with several marquee non-conference matchups, including Georgia vs Clemson in Atlanta. Ohio State faces a tough early test against Notre Dame in Week 2.`
+Georgia opens SEC play this weekend, the first real test of a schedule that only gets tougher from here.`
   },
   {
     id: "10",
@@ -172,7 +173,7 @@ The NCAA Wrestling season begins in November, with Penn State's schedule featuri
     summary: "Trojans claim national title with fastest collegiate relay time in history.",
     imageUrl: "https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=800",
     author: "Jennifer Walsh",
-    timeAgo: "1 day ago",
+    timeAgo: "3 months ago",
     sport: "NCAA Track",
     fullContent: `USC Track & Field won the NCAA men's outdoor championship in record fashion, shattering the collegiate 4x400 relay record with a time of 2:58.41 at Hayward Field in Eugene, Oregon. The Trojans' anchor leg ran a 43.8-second split, the fastest in collegiate history.
 
@@ -182,17 +183,15 @@ LSU's women's team claimed their national title earlier in the week, led by a re
   },
   {
     id: "13",
-    title: "Panthers Raise Stanley Cup as NHL Free Agency Heats Up",
-    summary: "Florida celebrates second straight championship while stars switch teams in busy offseason.",
+    title: "Panthers Set to Raise Banner as NHL Season Opener Nears",
+    summary: "Florida gears up to defend back-to-back titles as training camps open across the league.",
     imageUrl: "https://images.unsplash.com/photo-1518607692857-409f29b9e36f?w=800",
     author: "Steve Morrison",
-    timeAgo: "1 day ago",
+    timeAgo: "4 hours ago",
     sport: "NHL Hockey",
-    fullContent: `The Florida Panthers celebrated their second consecutive Stanley Cup with a parade down Las Olas Boulevard, but the party is already giving way to a frantic free agency period. Several big-name players have changed teams as the NHL's salary cap saw its largest increase in years.
+    fullContent: `The defending back-to-back Stanley Cup champion Florida Panthers opened training camp this week, with the roster largely intact after a busy but relatively quiet-by-their-standards offseason. Free agency reshaped several other contenders: the Edmonton Oilers, who fell to the Panthers in a six-game Final, retooled their defense and added a veteran goaltender, while the Dallas Stars made the summer's biggest splash by signing a former 50-goal scorer to a long-term deal.
 
-The Edmonton Oilers, who fell to the Panthers in a six-game Final, have retooled their defense and added a veteran goaltender. The Dallas Stars made the biggest splash, signing a former 50-goal scorer to a long-term deal.
-
-The 2026-27 NHL regular season begins in October, with the Panthers raising their championship banner on opening night.`
+The 2026-27 NHL regular season begins in October, with the Panthers set to raise their second consecutive championship banner on opening night at Amerant Bank Arena.`
   },
   {
     id: "14",
