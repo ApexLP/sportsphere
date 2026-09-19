@@ -10,6 +10,12 @@ import {
 } from "react-native";
 import { Activity, Clock, Users, Heart, MoreVertical, ChevronUp, ChevronDown } from "lucide-react-native";
 import { router } from "expo-router";
+import {
+  NestableScrollContainer,
+  NestableDraggableFlatList,
+  ScaleDecorator,
+  RenderItemParams,
+} from "react-native-draggable-flatlist";
 import { mockLiveScores, mockLeaderboardEvents, LiveScore, LeaderboardEvent } from "@/mocks/live-scores";
 import { useFavorites } from "@/hooks/favorites-context";
 import { useTheme } from "@/hooks/theme-context";
@@ -130,6 +136,21 @@ export default function LiveScreen() {
     setOrder(newGlobalOrder);
   };
 
+  const handleSectionDragEnd = (originalList: FeedItem[], newData: FeedItem[]) => {
+    const sectionIds = new Set(originalList.map(i => i.id));
+    const newOrderIds = newData.map(i => i.id);
+    let pointer = 0;
+    const newGlobalOrder = globalOrder.map(id => {
+      if (sectionIds.has(id)) {
+        const replacement = newOrderIds[pointer];
+        pointer++;
+        return replacement;
+      }
+      return id;
+    });
+    setOrder(newGlobalOrder);
+  };
+
   const showMoveMenu = (list: FeedItem[], item: FeedItem, index: number) => {
     const buttons = [];
     if (index > 0) {
@@ -143,8 +164,18 @@ export default function LiveScreen() {
     Alert.alert(itemTitle(item), "Move this game", buttons);
   };
 
-  const renderReorderColumn = (item: FeedItem, index: number, list: FeedItem[]) => (
-    <View style={[styles.reorderColumn, { backgroundColor: colors.surface }]}>
+  const renderReorderColumn = (
+    item: FeedItem,
+    index: number,
+    list: FeedItem[],
+    drag?: () => void,
+    isActive?: boolean
+  ) => (
+    <View style={[
+      styles.reorderColumn,
+      { backgroundColor: colors.surface },
+      isActive && { borderColor: colors.orange, borderWidth: 1 }
+    ]}>
       <TouchableOpacity
         onPress={() => moveScore(list, item.id, -1)}
         disabled={index === 0}
@@ -154,10 +185,13 @@ export default function LiveScreen() {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => showMoveMenu(list, item, index)}
+        onLongPress={drag}
+        delayLongPress={200}
+        disabled={isActive}
         style={styles.reorderButton}
         hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
       >
-        <MoreVertical size={14} color={colors.textSecondary} />
+        <MoreVertical size={14} color={isActive ? colors.orange : colors.textSecondary} />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => moveScore(list, item.id, 1)}
@@ -169,14 +203,20 @@ export default function LiveScreen() {
     </View>
   );
 
-  const renderScoreCard = (score: LiveScore, index: number, list: FeedItem[]) => {
+  const renderScoreCard = (
+    score: LiveScore,
+    index: number,
+    list: FeedItem[],
+    drag?: () => void,
+    isActive?: boolean
+  ) => {
     const isHomeTeamFavorite = isFavorite(score.homeTeam);
     const isAwayTeamFavorite = isFavorite(score.awayTeam);
     const hasFavoriteTeam = isHomeTeamFavorite || isAwayTeamFavorite;
 
     return (
-    <View key={score.id} style={styles.cardRow}>
-      {renderReorderColumn(score, index, list)}
+    <View style={styles.cardRow}>
+      {renderReorderColumn(score, index, list, drag, isActive)}
       <TouchableOpacity
         style={[
           styles.scoreCard,
@@ -309,9 +349,15 @@ export default function LiveScreen() {
     );
   };
 
-  const renderLeaderboardCard = (event: LeaderboardEvent, index: number, list: FeedItem[]) => (
-    <View key={event.id} style={styles.cardRow}>
-      {renderReorderColumn(event, index, list)}
+  const renderLeaderboardCard = (
+    event: LeaderboardEvent,
+    index: number,
+    list: FeedItem[],
+    drag?: () => void,
+    isActive?: boolean
+  ) => (
+    <View style={styles.cardRow}>
+      {renderReorderColumn(event, index, list, drag, isActive)}
       <LeaderboardCard
         event={event}
         onPress={() => router.push({ pathname: "/leaderboard/[id]", params: { id: event.id, data: JSON.stringify(event) } })}
@@ -319,13 +365,22 @@ export default function LiveScreen() {
     </View>
   );
 
-  const renderItem = (item: FeedItem, index: number, list: FeedItem[]) =>
-    isLeaderboardItem(item)
-      ? renderLeaderboardCard(item, index, list)
-      : renderScoreCard(item, index, list);
+  const renderDraggableItem = (list: FeedItem[]) => {
+    function DraggableItem({ item, drag, isActive, getIndex }: RenderItemParams<FeedItem>) {
+      const index = getIndex() ?? 0;
+      return (
+        <ScaleDecorator>
+          {isLeaderboardItem(item)
+            ? renderLeaderboardCard(item, index, list, drag, isActive)
+            : renderScoreCard(item, index, list, drag, isActive)}
+        </ScaleDecorator>
+      );
+    }
+    return DraggableItem;
+  };
 
   return (
-    <ScrollView
+    <NestableScrollContainer
       style={[styles.container, { backgroundColor: colors.background }]}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -392,9 +447,14 @@ export default function LiveScreen() {
               <Text style={[styles.liveCountText, { color: colors.orange }]}>{liveGames.length}</Text>
             </View>
           </View>
-          <View style={styles.scoresGrid}>
-            {liveGames.map((item, index) => renderItem(item, index, liveGames))}
-          </View>
+          <NestableDraggableFlatList
+            data={liveGames}
+            keyExtractor={item => item.id}
+            renderItem={renderDraggableItem(liveGames)}
+            onDragEnd={({ data }) => handleSectionDragEnd(liveGames, data)}
+            contentContainerStyle={styles.scoresGrid}
+            scrollEnabled={false}
+          />
         </>
       )}
 
@@ -405,9 +465,14 @@ export default function LiveScreen() {
             <Clock size={20} color={colors.orange} />
             <Text style={[styles.sectionTitle, { color: colors.text }]}>Upcoming</Text>
           </View>
-          <View style={styles.scoresGrid}>
-            {upcomingGames.map((item, index) => renderItem(item, index, upcomingGames))}
-          </View>
+          <NestableDraggableFlatList
+            data={upcomingGames}
+            keyExtractor={item => item.id}
+            renderItem={renderDraggableItem(upcomingGames)}
+            onDragEnd={({ data }) => handleSectionDragEnd(upcomingGames, data)}
+            contentContainerStyle={styles.scoresGrid}
+            scrollEnabled={false}
+          />
         </>
       )}
 
@@ -417,14 +482,19 @@ export default function LiveScreen() {
           <View style={styles.sectionHeader}>
             <Text style={[styles.sectionTitle, { color: colors.text }]}>Finished</Text>
           </View>
-          <View style={styles.scoresGrid}>
-            {finishedGames.map((item, index) => renderItem(item, index, finishedGames))}
-          </View>
+          <NestableDraggableFlatList
+            data={finishedGames}
+            keyExtractor={item => item.id}
+            renderItem={renderDraggableItem(finishedGames)}
+            onDragEnd={({ data }) => handleSectionDragEnd(finishedGames, data)}
+            contentContainerStyle={styles.scoresGrid}
+            scrollEnabled={false}
+          />
         </>
       )}
 
       <View style={styles.bottomPadding} />
-    </ScrollView>
+    </NestableScrollContainer>
   );
 }
 
