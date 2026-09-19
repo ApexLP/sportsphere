@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,18 +8,23 @@ import {
   Switch,
   TextInput,
 } from "react-native";
-import { 
-  User, 
-  Bell, 
-  Shield, 
-  HelpCircle, 
+import {
+  User,
+  Bell,
+  Shield,
+  HelpCircle,
   LogOut,
   ChevronRight,
   Trophy,
   Heart,
+  Plus,
+  Calendar,
+  Search,
   LucideIcon
 } from "lucide-react-native";
 import { useTheme } from "@/hooks/theme-context";
+import { useFavorites } from "@/hooks/favorites-context";
+import { mockTeams } from "@/mocks/teams-data";
 
 type SettingItem = {
   icon: LucideIcon;
@@ -41,14 +46,34 @@ type SettingsGroup = {
 
 export default function ProfileScreen() {
   const { colors } = useTheme();
+  const { favorites, toggleFavorite } = useFavorites();
   const [notifications, setNotifications] = React.useState(true);
   const [liveAlerts, setLiveAlerts] = React.useState(false);
-  
+
   // User profile form state
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
+
+  // My Teams (favorites) state
+  const [teamSearchQuery, setTeamSearchQuery] = React.useState("");
+  const [selectedTeamSport, setSelectedTeamSport] = React.useState("All");
+
+  const teamSports = useMemo(() => ["All", ...new Set(mockTeams.map(team => team.sport))], []);
+
+  const filteredTeams = useMemo(() => {
+    return mockTeams.filter(team => {
+      const matchesSearch = team.name.toLowerCase().includes(teamSearchQuery.toLowerCase()) ||
+                           team.league.toLowerCase().includes(teamSearchQuery.toLowerCase()) ||
+                           team.sport.toLowerCase().includes(teamSearchQuery.toLowerCase());
+      const matchesSport = selectedTeamSport === "All" || team.sport === selectedTeamSport;
+      return matchesSearch && matchesSport;
+    });
+  }, [teamSearchQuery, selectedTeamSport]);
+
+  const favoriteTeams = filteredTeams.filter(team => favorites.includes(team.id));
+  const suggestedTeams = filteredTeams.filter(team => !favorites.includes(team.id)).slice(0, 6);
 
   const settingsGroups: SettingsGroup[] = [
     {
@@ -98,7 +123,7 @@ export default function ProfileScreen() {
         <View style={styles.statsRow}>
           <View style={styles.statItem}>
             <Heart size={20} color={colors.orange} />
-            <Text style={[styles.statNumber, { color: colors.text }]}>12</Text>
+            <Text style={[styles.statNumber, { color: colors.text }]}>{favorites.length}</Text>
             <Text style={[styles.statLabel, { color: colors.textSecondary }]}>Following</Text>
           </View>
           <View style={[styles.statDivider, { backgroundColor: colors.border }]} />
@@ -161,6 +186,116 @@ export default function ProfileScreen() {
             />
           </View>
         </View>
+      </View>
+
+      {/* My Teams (Favorites) */}
+      <View style={styles.settingsGroup}>
+        <Text style={[styles.groupTitle, { color: colors.textSecondary }]}>My Teams</Text>
+
+        <View style={[styles.teamSearchContainer, { backgroundColor: colors.surface }]}>
+          <Search size={18} color={colors.textSecondary} />
+          <TextInput
+            style={[styles.teamSearchInput, { color: colors.text }]}
+            placeholder="Search teams, leagues, sports..."
+            placeholderTextColor={colors.textSecondary}
+            value={teamSearchQuery}
+            onChangeText={setTeamSearchQuery}
+          />
+        </View>
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.teamFilterContent}
+        >
+          {teamSports.map((sport) => (
+            <TouchableOpacity
+              key={sport}
+              style={[
+                styles.teamFilterChip,
+                { backgroundColor: selectedTeamSport === sport ? colors.orange : colors.surface }
+              ]}
+              onPress={() => setSelectedTeamSport(sport)}
+            >
+              <Text style={[
+                styles.teamFilterChipText,
+                { color: selectedTeamSport === sport ? colors.background : colors.textSecondary }
+              ]}>
+                {sport}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+
+        {favoriteTeams.length > 0 ? (
+          <View style={styles.teamsGrid}>
+            {favoriteTeams.map((team) => (
+              <View key={team.id} style={[styles.teamCard, { backgroundColor: colors.surface }]}>
+                <TouchableOpacity
+                  style={styles.heartButton}
+                  onPress={() => toggleFavorite(team.id)}
+                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                >
+                  <Heart size={18} color={colors.orange} fill={colors.orange} />
+                </TouchableOpacity>
+
+                <View style={[styles.teamLogo, { backgroundColor: colors.orange }]}>
+                  <Text style={styles.teamLogoText}>{team.abbreviation}</Text>
+                </View>
+
+                <Text style={[styles.teamName, { color: colors.text }]} numberOfLines={1}>{team.name}</Text>
+                <Text style={[styles.teamLeague, { color: colors.textSecondary }]}>{team.league}</Text>
+
+                <View style={styles.teamStats}>
+                  <View style={styles.statItemRow}>
+                    <Trophy size={12} color={colors.textSecondary} />
+                    <Text style={[styles.teamStatText, { color: colors.textSecondary }]}>{team.record}</Text>
+                  </View>
+                  <View style={styles.statItemRow}>
+                    <Calendar size={12} color={colors.textSecondary} />
+                    <Text style={[styles.teamStatText, { color: colors.textSecondary }]}>{team.nextGame}</Text>
+                  </View>
+                </View>
+              </View>
+            ))}
+          </View>
+        ) : (
+          <View style={styles.teamsEmptyState}>
+            <Heart size={40} color={colors.textSecondary} />
+            <Text style={[styles.teamsEmptyTitle, { color: colors.text }]}>No Favorite Teams</Text>
+            <Text style={[styles.teamsEmptyText, { color: colors.textSecondary }]}>
+              Follow teams below to see their scores and news across the app
+            </Text>
+          </View>
+        )}
+
+        {suggestedTeams.length > 0 && (
+          <View style={styles.suggestedSection}>
+            <Text style={[styles.suggestedSectionTitle, { color: colors.text }]}>Suggested Teams</Text>
+            {suggestedTeams.map((team) => (
+              <TouchableOpacity
+                key={team.id}
+                style={[styles.suggestedCard, { backgroundColor: colors.surface }]}
+                onPress={() => toggleFavorite(team.id)}
+                activeOpacity={0.9}
+              >
+                <View style={[styles.suggestedLogo, { backgroundColor: colors.orange }]}>
+                  <Text style={styles.suggestedLogoText}>{team.abbreviation}</Text>
+                </View>
+                <View style={styles.suggestedInfo}>
+                  <Text style={[styles.suggestedName, { color: colors.text }]} numberOfLines={1}>{team.name}</Text>
+                  <Text style={[styles.suggestedLeague, { color: colors.textSecondary }]}>{team.league} · {team.record}</Text>
+                </View>
+                <TouchableOpacity
+                  style={[styles.addButton, { backgroundColor: colors.background }]}
+                  onPress={() => toggleFavorite(team.id)}
+                >
+                  <Plus size={18} color={colors.orange} />
+                </TouchableOpacity>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
       </View>
 
       {/* Settings Groups */}
@@ -266,6 +401,152 @@ const styles = StyleSheet.create({
   },
   settingsGroup: {
     marginTop: 24,
+  },
+  teamSearchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    marginHorizontal: 16,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    borderRadius: 12,
+    marginBottom: 10,
+  },
+  teamSearchInput: {
+    flex: 1,
+    fontSize: 15,
+  },
+  teamFilterContent: {
+    paddingHorizontal: 16,
+    gap: 8,
+    paddingBottom: 12,
+  },
+  teamFilterChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 18,
+  },
+  teamFilterChipText: {
+    fontSize: 13,
+    fontWeight: "600" as const,
+  },
+  teamsGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    paddingHorizontal: 12,
+    gap: 12,
+  },
+  teamCard: {
+    borderRadius: 16,
+    padding: 14,
+    width: "47%",
+    alignItems: "center",
+  },
+  heartButton: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    zIndex: 1,
+  },
+  teamLogo: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  teamLogoText: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "bold" as const,
+  },
+  teamName: {
+    fontSize: 14,
+    fontWeight: "600" as const,
+    textAlign: "center",
+    marginBottom: 2,
+  },
+  teamLeague: {
+    fontSize: 11,
+    marginBottom: 10,
+  },
+  teamStats: {
+    width: "100%",
+    gap: 6,
+  },
+  statItemRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 5,
+  },
+  teamStatText: {
+    fontSize: 11,
+  },
+  teamsEmptyState: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 32,
+    paddingHorizontal: 32,
+  },
+  teamsEmptyTitle: {
+    fontSize: 16,
+    fontWeight: "600" as const,
+    marginTop: 12,
+    marginBottom: 6,
+  },
+  teamsEmptyText: {
+    fontSize: 13,
+    textAlign: "center",
+    lineHeight: 18,
+  },
+  suggestedSection: {
+    marginTop: 16,
+    paddingHorizontal: 16,
+    gap: 10,
+  },
+  suggestedSectionTitle: {
+    fontSize: 15,
+    fontWeight: "700" as const,
+    marginBottom: 2,
+  },
+  suggestedCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 12,
+    padding: 12,
+    gap: 12,
+  },
+  suggestedLogo: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  suggestedLogoText: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: "bold" as const,
+  },
+  suggestedInfo: {
+    flex: 1,
+  },
+  suggestedName: {
+    fontSize: 14,
+    fontWeight: "600" as const,
+  },
+  suggestedLeague: {
+    fontSize: 12,
+    marginTop: 2,
+  },
+  addButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    justifyContent: "center",
+    alignItems: "center",
   },
   groupTitle: {
     fontSize: 14,
