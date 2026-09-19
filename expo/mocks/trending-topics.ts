@@ -150,15 +150,6 @@ export const trendingTopics: TrendingTopic[] = [
     relatedNews: ["3"]
   },
   {
-    id: "18",
-    hashtag: "#NBASummerLeague",
-    tweetCount: "178K",
-    category: "Basketball",
-    description: "Thunder's young core shines in Las Vegas after first NBA championship",
-    isLive: true,
-    relatedNews: ["16"]
-  },
-  {
     id: "19",
     hashtag: "#LA2028",
     tweetCount: "124K",

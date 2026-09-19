@@ -21,8 +21,6 @@ const LEAGUE_TO_PROVIDERS: Record<string, string[]> = {
   "NFL": ["paramount", "peacock", "primevideo", "netflix", "youtube", "espn"],
   "NCAA Football": ["peacock", "paramount", "espn"],
   "NCAA Basketball": ["peacock", "paramount", "espn"],
-  "NBA": ["peacock", "primevideo", "hbomax", "espn"],
-  "Basketball": ["peacock", "primevideo", "hbomax", "espn"],
   "MLB": ["peacock", "hbomax", "netflix", "espn", "appletv"],
   "NHL": ["hbomax", "espn"],
   "UFC": ["paramount"],

@@ -78,7 +78,7 @@ export default function LiveScreen() {
     }
   }, [liveEspnLoading, liveEspnScores]);
 
-  const sports = ["all", "soccer", "tennis", "cycling", "golf", "rugby", "motor racing", "combat sports", "boxing", "olympic sports", "nfl", "ncaa football", "ncaa basketball", "ncaa wrestling", "ncaa track", "nhl hockey", "horse racing", "cricket", "baseball", "basketball"];
+  const sports = ["all", "soccer", "tennis", "cycling", "golf", "rugby", "motor racing", "combat sports", "boxing", "olympic sports", "nfl", "ncaa football", "ncaa basketball", "ncaa wrestling", "ncaa track", "nhl hockey", "horse racing", "cricket", "baseball"];
 
 
 

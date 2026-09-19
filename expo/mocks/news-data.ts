@@ -223,18 +223,4 @@ Jasprit Bumrah was the pick of the bowlers, taking 4 for 42 in England's first i
 
 England captain Ben Stokes acknowledged the team's batting was "not good enough" and pointed to the need for a big second-innings effort. India leads the five-match series 1-0 after winning the opener at Headingley.`
   },
-  {
-    id: "16",
-    title: "OKC Thunder Win First NBA Title, Dominate Pacers in Summer League Tune-Up",
-    summary: "Fresh off their championship run, the Thunder's young core shines in Las Vegas Summer League.",
-    imageUrl: "https://images.unsplash.com/photo-1546519638-29e946c5b7df?w=800",
-    author: "Anthony Reyes",
-    timeAgo: "2 days ago",
-    sport: "Basketball",
-    fullContent: `Fresh off winning their first NBA championship, the Oklahoma City Thunder are already back on the court at the NBA Summer League in Las Vegas. Their young roster, led by newly crowned Finals MVP Shai Gilgeous-Alexander, is showing no championship hangover.
-
-The Thunder defeated the Indiana Pacers — the team they beat in the Finals — 78-74 in a Summer League matchup that featured several second-round picks and two-way contract players. The energy in the arena was electric, with Thunder fans traveling from Oklahoma to fill the stands.
-
-Head coach Mark Daigneault said the Summer League is critical for developing the team's depth, which was a key factor in their title run. The Thunder's regular season opener is set for late October.`
-  },
 ];

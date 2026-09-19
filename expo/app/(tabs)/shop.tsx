@@ -146,16 +146,6 @@ const merchandiseData: MerchandiseItem[] = [
     inStock: true,
   },
   {
-    id: '12',
-    name: 'OKC Thunder NBA Champions Cap',
-    price: 34.99,
-    image: 'https://images.unsplash.com/photo-1546519638-29e946c5b7df?w=300&h=300&fit=crop',
-    category: 'hat',
-    team: 'Oklahoma City Thunder',
-    rating: 4.9,
-    inStock: false,
-  },
-  {
     id: '13',
     name: 'Panthers Stanley Cup Champions Jersey',
     price: 89.99,

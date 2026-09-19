@@ -497,7 +497,7 @@ export const mockTeams: Team[] = [
     record: "World #3",
     nextGame: "vs IND"
   },
-  // Baseball / MLB (above NBA)
+  // Baseball / MLB
   {
     id: "New York Yankees",
     name: "New York Yankees",
@@ -527,36 +527,5 @@ export const mockTeams: Team[] = [
     color: "#005A9C",
     record: "56-33",
     nextGame: "vs SD"
-  },
-  // Basketball / NBA (bottom)
-  {
-    id: "Oklahoma City Thunder",
-    name: "Oklahoma City Thunder",
-    abbreviation: "OKC",
-    sport: "Basketball",
-    league: "NBA",
-    color: "#007AC1",
-    record: "NBA Champions",
-    nextGame: "Summer League"
-  },
-  {
-    id: "Indiana Pacers",
-    name: "Indiana Pacers",
-    abbreviation: "IND",
-    sport: "Basketball",
-    league: "NBA",
-    color: "#FDBB30",
-    record: "NBA Finalist",
-    nextGame: "Summer League"
-  },
-  {
-    id: "Denver Nuggets",
-    name: "Denver Nuggets",
-    abbreviation: "DEN",
-    sport: "Basketball",
-    league: "NBA",
-    color: "#0E2240",
-    record: "57-25",
-    nextGame: "Summer League"
   },
 ];

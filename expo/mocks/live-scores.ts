@@ -344,7 +344,7 @@ export const mockLiveScores: LiveScore[] = [
     status: "UPCOMING",
     time: "Sep 15 ODI",
   },
-  // Baseball (above NBA)
+  // Baseball
   {
     id: "20",
     sport: "Baseball",
@@ -371,34 +371,6 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#FFC425",
     status: "UPCOMING",
     time: "10:10 PM ET",
-  },
-  // Basketball / NBA (bottom)
-  {
-    id: "22",
-    sport: "Basketball",
-    league: "NBA Summer League",
-    homeTeam: "Oklahoma City Thunder",
-    awayTeam: "Indiana Pacers",
-    homeScore: 78,
-    awayScore: 74,
-    homeColor: "#007AC1",
-    awayColor: "#FDBB30",
-    status: "LIVE",
-    time: "Q3 4:32",
-    viewers: "420K"
-  },
-  {
-    id: "23",
-    sport: "Basketball",
-    league: "NBA Summer League",
-    homeTeam: "Denver Nuggets",
-    awayTeam: "Miami Heat",
-    homeScore: 0,
-    awayScore: 0,
-    homeColor: "#0E2240",
-    awayColor: "#98002E",
-    status: "UPCOMING",
-    time: "11:00 PM ET",
   },
 ];
 
