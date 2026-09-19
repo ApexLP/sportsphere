@@ -1,20 +1,23 @@
 export interface WatchProvider {
   name: string;
-  iosScheme: string;
   webFallback: string;
 }
 
+// Opening these https:// URLs relies on each app's own Universal Links
+// registration for its domain: iOS opens the app directly if installed,
+// or Safari otherwise. No custom URL scheme needed (and no per-app scheme
+// to keep correct as apps rebrand/change their scheme, e.g. HBO Max -> Max).
 const PROVIDERS: Record<string, WatchProvider> = {
-  netflix: { name: "Netflix", iosScheme: "nflx://", webFallback: "https://www.netflix.com" },
-  hulu: { name: "Hulu", iosScheme: "hulu://", webFallback: "https://www.hulu.com" },
-  youtube: { name: "YouTube TV", iosScheme: "youtubetv://", webFallback: "https://tv.youtube.com" },
-  hbomax: { name: "HBO Max", iosScheme: "hbomax://", webFallback: "https://www.max.com" },
-  paramount: { name: "Paramount+", iosScheme: "paramountplus://", webFallback: "https://www.paramountplus.com" },
-  peacock: { name: "Peacock", iosScheme: "peacocktv://", webFallback: "https://www.peacocktv.com" },
-  primevideo: { name: "Prime Video", iosScheme: "aiv://", webFallback: "https://www.amazon.com/gp/video" },
-  disneyplus: { name: "Disney+", iosScheme: "disneyplus://", webFallback: "https://www.disneyplus.com" },
-  appletv: { name: "Apple TV", iosScheme: "videos://", webFallback: "https://tv.apple.com" },
-  espn: { name: "ESPN", iosScheme: "sportscenter://", webFallback: "https://www.espn.com/watch" },
+  netflix: { name: "Netflix", webFallback: "https://www.netflix.com" },
+  hulu: { name: "Hulu", webFallback: "https://www.hulu.com" },
+  youtube: { name: "YouTube TV", webFallback: "https://tv.youtube.com" },
+  hbomax: { name: "HBO Max", webFallback: "https://www.max.com" },
+  paramount: { name: "Paramount+", webFallback: "https://www.paramountplus.com" },
+  peacock: { name: "Peacock", webFallback: "https://www.peacocktv.com" },
+  primevideo: { name: "Prime Video", webFallback: "https://www.amazon.com/gp/video" },
+  disneyplus: { name: "Disney+", webFallback: "https://www.disneyplus.com" },
+  appletv: { name: "Apple TV", webFallback: "https://tv.apple.com" },
+  espn: { name: "ESPN", webFallback: "https://www.espn.com/watch" },
 };
 
 const LEAGUE_TO_PROVIDERS: Record<string, string[]> = {

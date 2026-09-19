@@ -15,21 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "app.rork.sportsphere",
-      "infoPlist": {
-        "LSApplicationQueriesSchemes": [
-          "nflx",
-          "hulu",
-          "youtubetv",
-          "hbomax",
-          "paramountplus",
-          "peacocktv",
-          "aiv",
-          "disneyplus",
-          "videos",
-          "sportscenter"
-        ]
-      }
+      "bundleIdentifier": "app.rork.sportsphere"
     },
     "android": {
       "adaptiveIcon": {

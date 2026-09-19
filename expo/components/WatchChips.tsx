@@ -17,13 +17,11 @@ export default function WatchChips({ league, sport }: WatchChipsProps) {
     return null;
   }
 
-  const openProvider = async (iosScheme: string, webFallback: string) => {
-    try {
-      const canOpen = await Linking.canOpenURL(iosScheme);
-      await Linking.openURL(canOpen ? iosScheme : webFallback);
-    } catch {
-      Linking.openURL(webFallback).catch(() => {});
-    }
+  const openProvider = (webFallback: string) => {
+    // Major streaming apps register Universal Links for their own domain, so
+    // opening the https:// URL opens the app directly if it's installed, and
+    // falls back to Safari otherwise — no per-app custom scheme guessing needed.
+    Linking.openURL(webFallback).catch(() => {});
   };
 
   return (
@@ -41,7 +39,7 @@ export default function WatchChips({ league, sport }: WatchChipsProps) {
           <TouchableOpacity
             key={provider.name}
             style={[styles.chip, { backgroundColor: colors.surface, borderColor: colors.orange }]}
-            onPress={() => openProvider(provider.iosScheme, provider.webFallback)}
+            onPress={() => openProvider(provider.webFallback)}
             activeOpacity={0.7}
           >
             <Text style={[styles.chipText, { color: colors.orange }]}>{provider.name}</Text>
