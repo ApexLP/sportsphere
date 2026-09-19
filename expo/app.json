@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#CD6729"
+        "backgroundColor": "#FF6B00"
       },
       "package": "app.rork.sportsphere"
     },
