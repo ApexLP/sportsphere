@@ -15,12 +15,26 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "app.rork.sportsphere"
+      "bundleIdentifier": "app.rork.sportsphere",
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "nflx",
+          "hulu",
+          "youtubetv",
+          "hbomax",
+          "paramountplus",
+          "peacocktv",
+          "aiv",
+          "disneyplus",
+          "videos",
+          "sportscenter"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#CD6729"
       },
       "package": "app.rork.sportsphere"
     },

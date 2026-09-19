@@ -12,6 +12,7 @@ import { X, Heart, Trophy } from "lucide-react-native";
 import { LeaderboardEvent } from "@/mocks/live-scores";
 import { useTheme } from "@/hooks/theme-context";
 import { useFavorites } from "@/hooks/favorites-context";
+import WatchChips from "@/components/WatchChips";
 
 export default function LeaderboardScreen() {
   const { colors } = useTheme();
@@ -64,6 +65,8 @@ export default function LeaderboardScreen() {
           <Trophy size={18} color={colors.orange} />
           <Text style={[styles.title, { color: colors.text }]}>{event.eventName}</Text>
         </View>
+
+        <WatchChips league={event.league} sport={event.sport} />
 
         <View style={[styles.card, { backgroundColor: colors.surface }]}>
           {event.entries.map((entry, i) => {

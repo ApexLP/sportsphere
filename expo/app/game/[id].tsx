@@ -11,6 +11,7 @@ import { useLocalSearchParams, router } from "expo-router";
 import { X, Clock, Users, MapPin, Tv, ClipboardList } from "lucide-react-native";
 import { LiveScore } from "@/mocks/live-scores";
 import { useTheme } from "@/hooks/theme-context";
+import WatchChips from "@/components/WatchChips";
 
 export default function GameScreen() {
   const { colors } = useTheme();
@@ -80,6 +81,8 @@ export default function GameScreen() {
             secondaryColor={colors.textSecondary}
           />
         </View>
+
+        <WatchChips league={score.league} sport={score.sport} />
 
         {periods > 1 && (
           <View style={[styles.card, { backgroundColor: colors.surface }]}>
