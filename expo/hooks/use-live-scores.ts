@@ -5,19 +5,22 @@ interface EspnSource {
   sport: string;
   league: string;
   url: string;
+  viewers: string;
 }
 
 const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports";
 
+// Rough perceived-popularity estimate per league, used as a default sort signal
+// since ESPN's scoreboard endpoint doesn't provide a viewer/interest count.
 const SOURCES: EspnSource[] = [
-  { sport: "Soccer", league: "FIFA World Cup 2026", url: `${ESPN_BASE}/soccer/fifa.world/scoreboard` },
-  { sport: "Soccer", league: "Premier League", url: `${ESPN_BASE}/soccer/eng.1/scoreboard` },
-  { sport: "NFL", league: "NFL", url: `${ESPN_BASE}/football/nfl/scoreboard` },
-  { sport: "NCAA Football", league: "NCAA FBS", url: `${ESPN_BASE}/football/college-football/scoreboard` },
-  { sport: "NCAA Basketball", league: "NCAA D1", url: `${ESPN_BASE}/basketball/mens-college-basketball/scoreboard` },
-  { sport: "NHL Hockey", league: "NHL", url: `${ESPN_BASE}/hockey/nhl/scoreboard` },
-  { sport: "Baseball", league: "MLB", url: `${ESPN_BASE}/baseball/mlb/scoreboard` },
-  { sport: "Combat Sports", league: "UFC", url: `${ESPN_BASE}/mma/ufc/scoreboard` },
+  { sport: "Soccer", league: "FIFA World Cup 2026", url: `${ESPN_BASE}/soccer/fifa.world/scoreboard`, viewers: "6.5M" },
+  { sport: "Soccer", league: "Premier League", url: `${ESPN_BASE}/soccer/eng.1/scoreboard`, viewers: "2.8M" },
+  { sport: "NFL", league: "NFL", url: `${ESPN_BASE}/football/nfl/scoreboard`, viewers: "4.5M" },
+  { sport: "NCAA Football", league: "NCAA FBS", url: `${ESPN_BASE}/football/college-football/scoreboard`, viewers: "1.6M" },
+  { sport: "NCAA Basketball", league: "NCAA D1", url: `${ESPN_BASE}/basketball/mens-college-basketball/scoreboard`, viewers: "1.1M" },
+  { sport: "NHL Hockey", league: "NHL", url: `${ESPN_BASE}/hockey/nhl/scoreboard`, viewers: "890K" },
+  { sport: "Baseball", league: "MLB", url: `${ESPN_BASE}/baseball/mlb/scoreboard`, viewers: "1.3M" },
+  { sport: "Combat Sports", league: "UFC", url: `${ESPN_BASE}/mma/ufc/scoreboard`, viewers: "1.5M" },
 ];
 
 export const LIVE_COVERED_SPORTS = Array.from(new Set(SOURCES.map((s) => s.sport)));
@@ -69,6 +72,7 @@ async function fetchSource(source: EspnSource): Promise<LiveScore[]> {
           awayColor: away?.team?.color ? `#${away.team.color}` : "#94A3B8",
           status: mapStatus(state),
           time: event?.status?.type?.shortDetail ?? "",
+          viewers: source.viewers,
           venue: comp?.venue?.fullName,
           broadcast: comp?.broadcasts?.[0]?.names?.join(", "),
           attendance: comp?.attendance || undefined,

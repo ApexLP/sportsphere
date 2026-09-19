@@ -46,6 +46,7 @@ export interface LeaderboardEvent {
   status: "LIVE" | "UPCOMING" | "FINISHED";
   time: string;
   entries: LeaderboardEntry[];
+  viewers?: string;
 }
 
 const LEADERBOARD_MOTOR_RACING_LEAGUES = new Set([
@@ -91,8 +92,8 @@ export const mockLiveScores: LiveScore[] = [
     awayScore: 2,
     homeColor: "#B22234",
     awayColor: "#000000",
-    status: "LIVE",
-    time: "68'",
+    status: "FINISHED",
+    time: "Final",
     viewers: "8.5M"
   },
   {
@@ -107,6 +108,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#75AADB",
     status: "UPCOMING",
     time: "8:00 PM ET",
+    viewers: "7.2M"
   },
   // Tennis
   {
@@ -115,12 +117,12 @@ export const mockLiveScores: LiveScore[] = [
     league: "Wimbledon",
     homeTeam: "Carlos Alcaraz",
     awayTeam: "Jannik Sinner",
-    homeScore: 2,
-    awayScore: 1,
+    homeScore: 3,
+    awayScore: 2,
     homeColor: "#C60B1E",
     awayColor: "#009246",
-    status: "LIVE",
-    time: "Set 4",
+    status: "FINISHED",
+    time: "Final",
     viewers: "980K"
   },
   {
@@ -129,12 +131,12 @@ export const mockLiveScores: LiveScore[] = [
     league: "Wimbledon",
     homeTeam: "Iga Swiatek",
     awayTeam: "Coco Gauff",
-    homeScore: 1,
-    awayScore: 0,
+    homeScore: 3,
+    awayScore: 1,
     homeColor: "#DC143C",
     awayColor: "#B22234",
-    status: "LIVE",
-    time: "Set 2",
+    status: "FINISHED",
+    time: "Final",
     viewers: "720K"
   },
   // Rugby
@@ -150,6 +152,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#007A4D",
     status: "FINISHED",
     time: "Final",
+    viewers: "310K"
   },
   // Combat Sports / UFC
   {
@@ -164,6 +167,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#1E90FF",
     status: "UPCOMING",
     time: "UFC 316 Main Event",
+    viewers: "1.8M"
   },
   // Boxing
   {
@@ -176,27 +180,29 @@ export const mockLiveScores: LiveScore[] = [
     awayScore: 0,
     homeColor: "#D20A0A",
     awayColor: "#1E90FF",
-    status: "UPCOMING",
-    time: "Sep 13 PPV",
+    status: "FINISHED",
+    time: "Crawford wins by unanimous decision",
+    viewers: "2.2M"
   },
   // NFL
   {
     id: "12",
     sport: "NFL",
-    league: "NFL Preseason",
+    league: "NFL",
     homeTeam: "Kansas City Chiefs",
     awayTeam: "San Francisco 49ers",
-    homeScore: 0,
-    awayScore: 0,
+    homeScore: 20,
+    awayScore: 17,
     homeColor: "#E31837",
     awayColor: "#AA0000",
-    status: "UPCOMING",
-    time: "Aug 7 Preseason",
+    status: "LIVE",
+    time: "Q4 6:12",
+    viewers: "3.6M"
   },
   {
     id: "13",
     sport: "NFL",
-    league: "NFL Preseason",
+    league: "NFL",
     homeTeam: "Buffalo Bills",
     awayTeam: "Philadelphia Eagles",
     homeScore: 0,
@@ -204,7 +210,8 @@ export const mockLiveScores: LiveScore[] = [
     homeColor: "#00338D",
     awayColor: "#004C54",
     status: "UPCOMING",
-    time: "Aug 10 Preseason",
+    time: "Sun 1:00 PM ET",
+    viewers: "1.9M"
   },
   // NCAA Football
   {
@@ -213,12 +220,13 @@ export const mockLiveScores: LiveScore[] = [
     league: "NCAA FBS",
     homeTeam: "Georgia Bulldogs",
     awayTeam: "Ohio State Buckeyes",
-    homeScore: 0,
-    awayScore: 0,
+    homeScore: 27,
+    awayScore: 24,
     homeColor: "#BA0C2F",
     awayColor: "#BB0000",
-    status: "UPCOMING",
-    time: "Sep 5 Season Opener",
+    status: "FINISHED",
+    time: "Final",
+    viewers: "1.3M"
   },
   {
     id: "15",
@@ -231,7 +239,8 @@ export const mockLiveScores: LiveScore[] = [
     homeColor: "#00274C",
     awayColor: "#BF5700",
     status: "UPCOMING",
-    time: "Sep 7 Season Opener",
+    time: "Sat 3:30 PM ET",
+    viewers: "1.1M"
   },
   // NCAA Basketball
   {
@@ -246,6 +255,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#0085CE",
     status: "UPCOMING",
     time: "Nov Season Prep",
+    viewers: "480K"
   },
   {
     id: "17",
@@ -259,6 +269,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#005DAA",
     status: "UPCOMING",
     time: "Nov Season Prep",
+    viewers: "420K"
   },
   // NCAA Wrestling
   {
@@ -273,6 +284,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#FFCD00",
     status: "UPCOMING",
     time: "Nov Season Prep",
+    viewers: "95K"
   },
   // NCAA Track
   {
@@ -287,6 +299,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#461D7C",
     status: "FINISHED",
     time: "NCAA Finals",
+    viewers: "72K"
   },
   // NHL Hockey
   {
@@ -301,6 +314,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#041E42",
     status: "UPCOMING",
     time: "Oct Season Opener",
+    viewers: "670K"
   },
   // Horse Racing
   {
@@ -313,36 +327,9 @@ export const mockLiveScores: LiveScore[] = [
     awayScore: 0,
     homeColor: "#8B4513",
     awayColor: "#708090",
-    status: "UPCOMING",
-    time: "Aug 24 Saratoga",
-  },
-  // Cricket
-  {
-    id: "26",
-    sport: "Cricket",
-    league: "ICC Test Series",
-    homeTeam: "India Cricket",
-    awayTeam: "England Cricket",
-    homeScore: 347,
-    awayScore: 289,
-    homeColor: "#438BCC",
-    awayColor: "#1E3A8A",
-    status: "LIVE",
-    time: "Day 3 Session 2",
-    viewers: "3.2M"
-  },
-  {
-    id: "27",
-    sport: "Cricket",
-    league: "ICC ODI Series",
-    homeTeam: "Australia Cricket",
-    awayTeam: "India Cricket",
-    homeScore: 0,
-    awayScore: 0,
-    homeColor: "#FFD700",
-    awayColor: "#438BCC",
-    status: "UPCOMING",
-    time: "Sep 15 ODI",
+    status: "FINISHED",
+    time: "Dornoch wins",
+    viewers: "310K"
   },
   // Baseball
   {
@@ -371,6 +358,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#FFC425",
     status: "UPCOMING",
     time: "10:10 PM ET",
+    viewers: "780K"
   },
 ];
 
@@ -383,6 +371,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Driver Standings",
     status: "LIVE",
     time: "2026 Season",
+    viewers: "2.1M",
     entries: [
       { position: 1, name: "Max Verstappen", detail: "0 pts behind", isLeader: true },
       { position: 2, name: "Lando Norris", detail: "-18 pts", isLeader: false },
@@ -397,10 +386,11 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     sport: "Motor Racing",
     league: "WEC",
     eventName: "6 Hours of Spa — Hypercar",
-    status: "LIVE",
-    time: "Hour 4 of 6",
+    status: "FINISHED",
+    time: "Final",
+    viewers: "410K",
     entries: [
-      { position: 1, name: "#8 Toyota Gazoo Racing", detail: "Leader", isLeader: true },
+      { position: 1, name: "#8 Toyota Gazoo Racing", detail: "Winner", isLeader: true },
       { position: 2, name: "#51 Ferrari AF Corse", detail: "+12.4s", isLeader: false },
       { position: 3, name: "#5 Porsche Penske", detail: "+38.1s", isLeader: false },
       { position: 4, name: "#7 Toyota Gazoo Racing", detail: "+1:02.7", isLeader: false },
@@ -413,10 +403,11 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     sport: "Motor Racing",
     league: "IndyCar",
     eventName: "Honda Indy 200 at Mid-Ohio",
-    status: "LIVE",
-    time: "Lap 55 of 80",
+    status: "FINISHED",
+    time: "Final",
+    viewers: "560K",
     entries: [
-      { position: 1, name: "Alex Palou", detail: "Leader", isLeader: true },
+      { position: 1, name: "Alex Palou", detail: "Winner", isLeader: true },
       { position: 2, name: "Scott Dixon", detail: "+2.1s", isLeader: false },
       { position: 3, name: "Pato O'Ward", detail: "+5.6s", isLeader: false },
       { position: 4, name: "Josef Newgarden", detail: "+9.8s", isLeader: false },
@@ -429,10 +420,11 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     sport: "Motor Racing",
     league: "WRC",
     eventName: "Rally Finland",
-    status: "LIVE",
-    time: "SS14 of 22",
+    status: "FINISHED",
+    time: "Final",
+    viewers: "290K",
     entries: [
-      { position: 1, name: "Kalle Rovanpera", detail: "Leader", isLeader: true },
+      { position: 1, name: "Kalle Rovanpera", detail: "Winner", isLeader: true },
       { position: 2, name: "Ott Tanak", detail: "+8.4s", isLeader: false },
       { position: 3, name: "Thierry Neuville", detail: "+22.7s", isLeader: false },
       { position: 4, name: "Elfyn Evans", detail: "+41.2s", isLeader: false },
@@ -447,6 +439,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Dakar Rally — Car Class",
     status: "UPCOMING",
     time: "Stage 6 starts 6:00 AM",
+    viewers: "670K",
     entries: [
       { position: 1, name: "Nasser Al-Attiyah", detail: "Overall Leader", isLeader: true },
       { position: 2, name: "Carlos Sainz Sr.", detail: "+4:12", isLeader: false },
@@ -463,6 +456,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Petit Le Mans — GTP",
     status: "FINISHED",
     time: "Final",
+    viewers: "180K",
     entries: [
       { position: 1, name: "#10 Cadillac Racing", detail: "Winner", isLeader: true },
       { position: 2, name: "#01 Cadillac Racing", detail: "+14.2s", isLeader: false },
@@ -477,10 +471,11 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     sport: "Motor Racing",
     league: "GT3",
     eventName: "Spa 24 Hours — GT3",
-    status: "LIVE",
-    time: "Hour 18 of 24",
+    status: "FINISHED",
+    time: "Final",
+    viewers: "220K",
     entries: [
-      { position: 1, name: "#32 Team WRT (Audi)", detail: "Leader", isLeader: true },
+      { position: 1, name: "#32 Team WRT (Audi)", detail: "Winner", isLeader: true },
       { position: 2, name: "#46 Team WRT (Audi)", detail: "+1 lap", isLeader: false },
       { position: 3, name: "#4 Mercedes-AMG", detail: "+2 laps", isLeader: false },
       { position: 4, name: "#63 Ferrari AF Corse", detail: "+3 laps", isLeader: false },
@@ -495,6 +490,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "24 Hours of Le Mans — Hypercar",
     status: "FINISHED",
     time: "Final",
+    viewers: "1.9M",
     entries: [
       { position: 1, name: "#8 Toyota Gazoo Racing", detail: "Winner", isLeader: true },
       { position: 2, name: "#6 Porsche Penske", detail: "+1 lap", isLeader: false },
@@ -509,10 +505,11 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     sport: "Golf",
     league: "The Open Championship",
     eventName: "The Open Championship",
-    status: "LIVE",
-    time: "Round 3",
+    status: "FINISHED",
+    time: "Final",
+    viewers: "1.4M",
     entries: [
-      { position: 1, name: "Scottie Scheffler", detail: "-14", isLeader: true },
+      { position: 1, name: "Scottie Scheffler", detail: "-17 (Winner)", isLeader: true },
       { position: 2, name: "Rory McIlroy", detail: "-11", isLeader: false },
       { position: 3, name: "Xander Schauffele", detail: "-9", isLeader: false },
       { position: 4, name: "Viktor Hovland", detail: "-7", isLeader: false },
@@ -528,6 +525,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "The Masters",
     status: "UPCOMING",
     time: "Round 1 Thu 10:00 AM ET",
+    viewers: "2.6M",
     entries: [
       { position: 1, name: "Scottie Scheffler", detail: "E", isLeader: true },
       { position: 2, name: "Jon Rahm", detail: "E", isLeader: false },
@@ -541,15 +539,16 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     id: "cycling-tour-de-france",
     sport: "Cycling",
     league: "Tour de France",
-    eventName: "Tour de France — Stage 8 GC",
-    status: "LIVE",
-    time: "Stage 8",
+    eventName: "Tour de France — Final GC",
+    status: "FINISHED",
+    time: "Final",
+    viewers: "1.8M",
     entries: [
-      { position: 1, name: "Tadej Pogacar", detail: "Leader", isLeader: true },
-      { position: 2, name: "Jonas Vingegaard", detail: "+1:14", isLeader: false },
-      { position: 3, name: "Remco Evenepoel", detail: "+2:41", isLeader: false },
-      { position: 4, name: "Primoz Roglic", detail: "+3:58", isLeader: false },
-      { position: 5, name: "Joao Almeida", detail: "+5:22", isLeader: false },
+      { position: 1, name: "Tadej Pogacar", detail: "Winner", isLeader: true },
+      { position: 2, name: "Jonas Vingegaard", detail: "+3:15", isLeader: false },
+      { position: 3, name: "Remco Evenepoel", detail: "+5:42", isLeader: false },
+      { position: 4, name: "Primoz Roglic", detail: "+8:03", isLeader: false },
+      { position: 5, name: "Joao Almeida", detail: "+10:37", isLeader: false },
     ],
   },
   // Cycling — Giro d'Italia (another stage race example)
@@ -560,6 +559,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Giro d'Italia — Stage 12 GC",
     status: "FINISHED",
     time: "Stage 12 Final",
+    viewers: "540K",
     entries: [
       { position: 1, name: "Tadej Pogacar", detail: "Leader", isLeader: true },
       { position: 2, name: "Geraint Thomas", detail: "+2:56", isLeader: false },
@@ -576,6 +576,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Men's 100m Final",
     status: "FINISHED",
     time: "Final",
+    viewers: "4.2M",
     entries: [
       { position: 1, name: "Noah Lyles", detail: "9.79s", isLeader: true },
       { position: 2, name: "Kishane Thompson", detail: "9.81s", isLeader: false },

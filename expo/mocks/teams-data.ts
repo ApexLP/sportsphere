@@ -213,20 +213,20 @@ export const mockTeams: Team[] = [
     name: "Canelo Alvarez",
     abbreviation: "CA",
     sport: "Boxing",
-    league: "WBA / WBC",
+    league: "Super Middleweight",
     color: "#D20A0A",
-    record: "62-2-2",
-    nextGame: "vs Crawford"
+    record: "62-3-2",
+    nextGame: "Rematch TBD"
   },
   {
     id: "Terence Crawford",
     name: "Terence Crawford",
     abbreviation: "TC",
     sport: "Boxing",
-    league: "WBO",
+    league: "Super Middleweight",
     color: "#1E90FF",
-    record: "41-0",
-    nextGame: "@ Canelo"
+    record: "42-0",
+    nextGame: "Undisputed Champion"
   },
   // Olympic Sports
   {
@@ -465,37 +465,6 @@ export const mockTeams: Team[] = [
     color: "#708090",
     record: "Preakness Winner",
     nextGame: "Travers Stakes"
-  },
-  // Cricket
-  {
-    id: "India Cricket",
-    name: "India Cricket",
-    abbreviation: "IND",
-    sport: "Cricket",
-    league: "ICC",
-    color: "#438BCC",
-    record: "World #1",
-    nextGame: "vs ENG"
-  },
-  {
-    id: "Australia Cricket",
-    name: "Australia Cricket",
-    abbreviation: "AUS",
-    sport: "Cricket",
-    league: "ICC",
-    color: "#FFD700",
-    record: "World #2",
-    nextGame: "@ IND"
-  },
-  {
-    id: "England Cricket",
-    name: "England Cricket",
-    abbreviation: "ENG",
-    sport: "Cricket",
-    league: "ICC",
-    color: "#1E3A8A",
-    record: "World #3",
-    nextGame: "vs IND"
   },
   // Baseball / MLB
   {

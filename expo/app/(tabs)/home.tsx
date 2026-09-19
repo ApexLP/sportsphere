@@ -22,7 +22,7 @@ export default function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const categories = ["all", "soccer", "tennis", "cycling", "motor racing", "combat sports", "boxing", "nfl", "ncaa football", "ncaa basketball", "ncaa wrestling", "ncaa track", "nhl hockey", "horse racing", "cricket", "baseball", "basketball"];
+  const categories = ["all", "soccer", "tennis", "cycling", "motor racing", "combat sports", "boxing", "nfl", "ncaa football", "ncaa basketball", "ncaa wrestling", "ncaa track", "nhl hockey", "horse racing", "baseball"];
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);

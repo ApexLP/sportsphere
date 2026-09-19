@@ -14,8 +14,7 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#WorldCup2026",
     tweetCount: "2.4M",
     category: "Soccer",
-    description: "USA eliminated by Germany in quarterfinals as tournament reaches final weekend",
-    isLive: true,
+    description: "Looking back at USA's quarterfinal exit to Germany two months on",
     relatedNews: ["1"]
   },
   {
@@ -23,8 +22,7 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#Wimbledon",
     tweetCount: "856K",
     category: "Tennis",
-    description: "Alcaraz vs Sinner semifinal headlines Centre Court Friday action",
-    isLive: true,
+    description: "Revisiting Alcaraz's five-set semifinal win over Sinner from this summer's Championships",
     relatedNews: ["2"]
   },
   {
@@ -32,8 +30,7 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#TourdeFrance",
     tweetCount: "412K",
     category: "Cycling",
-    description: "Pogacar takes yellow jersey after dominant Pyrenean mountain stage",
-    isLive: true,
+    description: "Pogacar's overall win by 3:15 remains the story of this year's race",
     relatedNews: ["4"]
   },
   {
@@ -49,8 +46,7 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#TheOpen",
     tweetCount: "267K",
     category: "Golf",
-    description: "McIlroy and Scheffler headline final groups at Royal Liverpool",
-    isLive: true
+    description: "Scheffler's wire-to-wire win still the headline from this year's Open"
   },
   {
     id: "6",
@@ -65,7 +61,7 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#CaneloCrawford",
     tweetCount: "445K",
     category: "Boxing",
-    description: "Megafight officially signed for September 13 in Riyadh, Saudi Arabia",
+    description: "Crawford's upset win in Riyadh still dominating boxing conversation",
     relatedNews: ["7"]
   },
   {
@@ -77,10 +73,10 @@ export const trendingTopics: TrendingTopic[] = [
   },
   {
     id: "9",
-    hashtag: "#NFLTrainingCamp",
+    hashtag: "#NFLWeek3",
     tweetCount: "289K",
     category: "NFL",
-    description: "All 32 teams report to camp with Chiefs opening as Super Bowl favorites",
+    description: "Chiefs still unbeaten as the AFC West race heats up three weeks in",
     isLive: true,
     relatedNews: ["8"]
   },
@@ -129,17 +125,8 @@ export const trendingTopics: TrendingTopic[] = [
     hashtag: "#TraversStakes",
     tweetCount: "98K",
     category: "Horse Racing",
-    description: "Dornoch and Seize the Grey set for Saratoga showdown in the Midsummer Derby",
+    description: "Dornoch completes the Belmont-Travers double, eyeing the Breeders' Cup next",
     relatedNews: ["14"]
-  },
-  {
-    id: "16",
-    hashtag: "#IndvsEng",
-    tweetCount: "1.8M",
-    category: "Cricket",
-    description: "India dominates Day 3 at Lord's as England batting collapses in second Test",
-    isLive: true,
-    relatedNews: ["15"]
   },
   {
     id: "17",

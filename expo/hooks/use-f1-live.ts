@@ -68,6 +68,7 @@ export function useF1Live(): F1LiveData {
                 time: standings?.MRData?.StandingsTable?.season
                   ? `${standings.MRData.StandingsTable.season} Season`
                   : "Current Season",
+                viewers: "2.3M",
                 entries: standingsList.map((d: any): { position: number; name: string; detail: string; isLeader: boolean } => ({
                   position: Number(d.position),
                   name: `${d.Driver.givenName} ${d.Driver.familyName}`,
@@ -86,6 +87,7 @@ export function useF1Live(): F1LiveData {
                 eventName: lastRace.raceName,
                 status: "FINISHED",
                 time: "Final",
+                viewers: "3.4M",
                 entries: lastResults.map((r: any): { position: number; name: string; detail: string; isLeader: boolean } => ({
                   position: Number(r.position),
                   name: `${r.Driver.givenName} ${r.Driver.familyName}`,

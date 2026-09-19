@@ -17,9 +17,8 @@ export const mockNews: NewsArticle[] = [
     summary: "Host nation eliminated by Germany in front of record crowd at MetLife Stadium.",
     imageUrl: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800",
     author: "Michael Johnson",
-    timeAgo: "1 hour ago",
+    timeAgo: "2 months ago",
     sport: "Soccer",
-    isLive: true,
     fullContent: `The United States men's national team has been eliminated from the 2026 FIFA World Cup in a heartbreaking 2-1 quarterfinal defeat to Germany at MetLife Stadium. The host nation, which had captivated the country with its run to the final eight, saw its tournament end before a record crowd of 82,345.
 
 Germany took the lead in the 34th minute through Jamal Musiala, but the Americans equalized just after halftime when Christian Pulisic finished a swift counterattack. The match looked destined for extra time until Thomas Müller scored the winner in the 83rd minute, silencing the home crowd.
@@ -32,7 +31,7 @@ For the U.S., the loss marks another painful World Cup exit but also signals gen
     summary: "Carlos Alcaraz and Jannik Sinner renew their rivalry in the men's semifinal at the All England Club.",
     imageUrl: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800",
     author: "Emma Davis",
-    timeAgo: "3 hours ago",
+    timeAgo: "2 months ago",
     sport: "Tennis",
     fullContent: `Carlos Alcaraz and Jannik Sinner will meet in what is being billed as the most anticipated Wimbledon men's semifinal in years. Alcaraz, the 2023 champion, needed four sets to defeat a resurgent Novak Djokovic in the quarterfinals, while Sinner overcame Taylor Fritz in a five-set thriller.
 
@@ -60,7 +59,7 @@ The All-Star Game is just days away, and Judge is widely expected to start in th
     summary: "Slovenian rider seizes overall lead on Stage 8 with brutal attack in the Pyrenees.",
     imageUrl: "https://images.unsplash.com/photo-1534150174843-8b52f91f9627?w=800",
     author: "James Thompson",
-    timeAgo: "7 hours ago",
+    timeAgo: "2 months ago",
     sport: "Cycling",
     fullContent: `Tadej Pogacar claimed the yellow jersey at the Tour de France with a devastating attack on the final climb of Stage 8 in the Pyrenees. The UAE Team Emirates rider dropped defending champion Jonas Vingegaard with five kilometers to go and soloed to the stage win by nearly a minute.
 
@@ -74,7 +73,7 @@ Vingegaard, who survived a serious crash earlier this season, fought hard to lim
     summary: "Red Bull driver edges Hamilton and Leclerc in qualifying thriller at home race.",
     imageUrl: "https://images.unsplash.com/photo-1504280506541-aca063246d74?w=800",
     author: "Sarah Williams",
-    timeAgo: "9 hours ago",
+    timeAgo: "2 months ago",
     sport: "Motor Racing",
     fullContent: `Max Verstappen secured pole position for the British Grand Prix at Silverstone, narrowly beating Lewis Hamilton and Charles Leclerc in a rain-affected qualifying session. The Dutchman set his fastest lap on the final run just as the track began to dry.
 
@@ -98,31 +97,32 @@ Analysts are divided on whether Tsarukyan's youth and athleticism can overcome M
   },
   {
     id: "7",
-    title: "Canelo vs Crawford: Boxing's Biggest Fight Set for September",
-    summary: "Undisputed super middleweight king faces unbeaten pound-for-pound star in Saudi megafight.",
+    title: "Crawford Shocks Canelo, Wins Undisputed Super Middleweight Crown",
+    summary: "Unbeaten pound-for-pound star moves up two weight classes and outboxes Canelo in Riyadh megafight.",
     imageUrl: "https://images.unsplash.com/photo-1546519638-29e946c5b7df?w=800",
     author: "David Foster",
-    timeAgo: "16 hours ago",
+    timeAgo: "5 days ago",
     sport: "Boxing",
-    fullContent: `Canelo Alvarez and Terence Crawford have officially signed for a September 13 megafight in Riyadh, Saudi Arabia. The bout pits the undisputed super middleweight champion against the undefeated pound-for-pound king, who moves up two weight classes for the challenge.
+    fullContent: `Terence Crawford pulled off one of the biggest upsets in recent boxing history, outboxing Canelo Alvarez over twelve rounds to capture the undisputed super middleweight championship in Riyadh, Saudi Arabia. Crawford, moving up two weight classes for the challenge, used his trademark footwork and switch-hitting to keep Canelo off balance all night.
 
-Canelo (62-2-2, 39 KOs) is coming off a dominant unanimous decision over Jaime Munguia in May and has held multiple world titles across four weight divisions. Crawford (41-0, 31 KOs) last fought in August, stopping Errol Spence Jr. in nine rounds to become undisputed at welterweight.
+Canelo (62-3-2, 39 KOs) started strong behind the jab but couldn't solve Crawford's timing in the championship rounds. Crawford (42-0, 31 KOs) becomes just the second fighter in the four-belt era to win undisputed titles in three different weight classes.
 
-The fight is expected to generate over $100 million in revenue and has already broken pre-sale pay-per-view records. Promoters are calling it the biggest boxing match since Mayweather vs Pacquiao.`
+The fight generated over $100 million in revenue and broke pre-sale pay-per-view records. Promoters are already discussing a rematch clause, with Canelo expected to exercise it in early 2027.`
   },
   {
     id: "8",
-    title: "Chiefs Open as Super Bowl Favorites as NFL Training Camps Begin",
-    summary: "Kansas City leads the odds board with Mahomes fully healthy entering 2026 season.",
+    title: "Chiefs Still Unbeaten as Mahomes Rolls Through Early Season",
+    summary: "Kansas City sits atop the AFC West three weeks into the season with Mahomes playing at an MVP level.",
     imageUrl: "https://images.unsplash.com/photo-1583237684982-04489d39f5d3?w=800",
     author: "Chris Peterson",
-    timeAgo: "18 hours ago",
+    timeAgo: "6 hours ago",
     sport: "NFL",
-    fullContent: `The Kansas City Chiefs have opened as the betting favorites to win Super Bowl LXI as all 32 NFL teams report to training camp this week. Patrick Mahomes is fully healthy after offseason ankle surgery, and the team added wide receiver Xavier Worthy in the first round of the draft to complement Travis Kelce and Rashee Rice.
+    isLive: true,
+    fullContent: `The Kansas City Chiefs remain the team to beat through three weeks of the 2026 season, riding a fully healthy Patrick Mahomes and a retooled receiving corps led by rookie Xavier Worthy alongside Travis Kelce and Rashee Rice. Kansas City is in the fourth quarter of a tight divisional matchup with the San Francisco 49ers as of Thursday night.
 
-The Buffalo Bills and Philadelphia Eagles are close behind in the odds, with the San Francisco 49ers and Detroit Lions rounding out the top five. The Chiefs are seeking their fourth Super Bowl appearance in five years.
+The Buffalo Bills and Philadelphia Eagles are close behind in the AFC and NFC odds boards, with the San Francisco 49ers and Detroit Lions rounding out the league's top five. The Chiefs are chasing their fourth Super Bowl appearance in five years.
 
-Head coach Andy Reid dismissed the expectations, saying the team is focused on winning the AFC West first. The preseason kicks off August 7 with the Hall of Fame Game.`
+Head coach Andy Reid downplayed the hot start, saying the team is focused on winning the AFC West one week at a time rather than looking ahead to the postseason.`
   },
   {
     id: "9",
@@ -196,31 +196,16 @@ The 2026-27 NHL regular season begins in October, with the Panthers raising thei
   },
   {
     id: "14",
-    title: "Dornoch Targets Travers Stakes After Belmont Stakes Triumph",
-    summary: "Belmont winner headlines summer racing schedule at Saratoga this August.",
+    title: "Dornoch Completes Belmont-Travers Double at Saratoga",
+    summary: "Belmont winner holds off Seize the Grey in a Triple-Crown-winners showdown at the Midsummer Derby.",
     imageUrl: "https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=800",
     author: "Patricia Greene",
-    timeAgo: "1 day ago",
+    timeAgo: "3 weeks ago",
     sport: "Horse Racing",
-    fullContent: `Dornoch, winner of the Belmont Stakes, is the early favorite for the Travers Stakes at Saratoga Race Course on August 24. Trainer Danny Gargan has confirmed the colt will bypass the Haskell Stakes to focus on the "Midsummer Derby," a key prep for the Breeders' Cup Classic.
+    fullContent: `Dornoch added the Travers Stakes to his Belmont Stakes title with a determined stretch run at Saratoga Race Course, holding off Preakness winner Seize the Grey by three-quarters of a length in the "Midsummer Derby." Trainer Danny Gargan's decision to bypass the Haskell Stakes to freshen the colt for Saratoga paid off.
 
-Seize the Grey, who won the Preakness Stakes, is also pointing toward the Travers, setting up a rare showdown between two Triple Crown race winners. Mystik Dan, the Kentucky Derby winner, is uncertain for the race after a minor training setback.
+The victory set up a rare showdown between two Triple Crown race winners and cements Dornoch as the horse to beat heading into the Breeders' Cup Classic. Mystik Dan, the Kentucky Derby winner, was scratched the morning of the race after a minor training setback.
 
-Saratoga's summer meet has already seen record handle figures, with racing fans flocking to the historic upstate New York track for its 150th anniversary season.`
-  },
-  {
-    id: "15",
-    title: "India vs England Test Series Live: Hosts Dominate Day 3 at Lord's",
-    summary: "India builds massive lead as England's batting order collapses on Day 3.",
-    imageUrl: "https://images.unsplash.com/photo-1531415207412-1ce692919f53?w=800",
-    author: "Raj Patel",
-    timeAgo: "3 hours ago",
-    sport: "Cricket",
-    isLive: true,
-    fullContent: `India has taken firm control of the second Test against England at Lord's, building a lead of over 150 runs by stumps on Day 3. England's batting lineup collapsed in the afternoon session, losing six wickets for just 89 runs as India's spin attack ran riot on a deteriorating pitch.
-
-Jasprit Bumrah was the pick of the bowlers, taking 4 for 42 in England's first innings. Rishabh Pant's aggressive 87 off 94 balls earlier in the day had given India a crucial first-innings lead, and the visitors extended their advantage in the evening session with an unbroken century partnership.
-
-England captain Ben Stokes acknowledged the team's batting was "not good enough" and pointed to the need for a big second-innings effort. India leads the five-match series 1-0 after winning the opener at Headingley.`
+Saratoga's summer meet closed out with record handle figures, capping a historic 150th anniversary season at the upstate New York track.`
   },
 ];

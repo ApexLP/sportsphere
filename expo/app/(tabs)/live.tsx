@@ -41,6 +41,20 @@ function itemTitle(item: FeedItem): string {
   return isLeaderboardItem(item) ? item.eventName : `${item.homeTeam} vs ${item.awayTeam}`;
 }
 
+function parseViewerCount(viewers?: string): number {
+  if (!viewers) return 0;
+  const match = viewers.trim().match(/^([\d.]+)\s*([KMB]?)$/i);
+  if (!match) return 0;
+  const value = parseFloat(match[1]);
+  const suffix = match[2].toUpperCase();
+  const multiplier = suffix === "B" ? 1_000_000_000 : suffix === "M" ? 1_000_000 : suffix === "K" ? 1_000 : 1;
+  return value * multiplier;
+}
+
+function itemPopularity(item: FeedItem): number {
+  return parseViewerCount(item.viewers);
+}
+
 export default function LiveScreen() {
   const { colors } = useTheme();
   const [refreshing, setRefreshing] = useState(false);
@@ -78,7 +92,7 @@ export default function LiveScreen() {
     }
   }, [liveEspnLoading, liveEspnScores]);
 
-  const sports = ["all", "soccer", "tennis", "cycling", "golf", "rugby", "motor racing", "combat sports", "boxing", "olympic sports", "nfl", "ncaa football", "ncaa basketball", "ncaa wrestling", "ncaa track", "nhl hockey", "horse racing", "cricket", "baseball"];
+  const sports = ["all", "soccer", "tennis", "cycling", "golf", "rugby", "motor racing", "combat sports", "boxing", "olympic sports", "nfl", "ncaa football", "ncaa basketball", "ncaa wrestling", "ncaa track", "nhl hockey", "horse racing", "baseball"];
 
 
 
@@ -104,19 +118,24 @@ export default function LiveScreen() {
     ? [...orderedIds.filter(id => allItems.some(s => s.id === id)), ...allItems.filter(s => !orderedIds.includes(s.id)).map(s => s.id)]
     : allItems.map(s => s.id);
 
-  const orderIndex = (id: string) => {
-    const idx = globalOrder.indexOf(id);
-    return idx === -1 ? globalOrder.length : idx;
-  };
-
-  // Sort to show favorite games first, then respect manual order within each group
+  // Sort: favorites first, then anything the user has explicitly moved (in its saved
+  // relative order), then everything else ranked by popularity (viewer count)
   filteredScores = filteredScores.sort((a, b) => {
     const aHasFavorite = itemHasFavorite(a, isFavorite);
     const bHasFavorite = itemHasFavorite(b, isFavorite);
 
     if (aHasFavorite && !bHasFavorite) return -1;
     if (!aHasFavorite && bHasFavorite) return 1;
-    return orderIndex(a.id) - orderIndex(b.id);
+
+    const aSavedIdx = orderedIds.indexOf(a.id);
+    const bSavedIdx = orderedIds.indexOf(b.id);
+    if (aSavedIdx !== -1 || bSavedIdx !== -1) {
+      if (aSavedIdx === -1) return 1;
+      if (bSavedIdx === -1) return -1;
+      return aSavedIdx - bSavedIdx;
+    }
+
+    return itemPopularity(b) - itemPopularity(a);
   });
 
   const liveGames = filteredScores.filter(s => s.status === "LIVE");
