@@ -55,13 +55,13 @@ Head coach Andy Reid downplayed the hot start, saying the team is focused on win
   },
   {
     id: "6",
-    title: "UFC 316: Makhachev vs Tsarukyan Lightweight Title Rematch Set",
-    summary: "Champion and challenger face off again in highly anticipated five-round main event.",
+    title: "UFC 321: Makhachev Puts Lightweight Title on the Line Against Tsarukyan",
+    summary: "Champion and top contender finally meet in a five-round main event this weekend.",
     imageUrl: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=800",
     author: "Lisa Anderson",
     timeAgo: "12 hours ago",
     sport: "Combat Sports",
-    fullContent: `Islam Makhachev will defend his UFC lightweight title against Arman Tsarukyan in the main event of UFC 316, a rematch of their razor-close 2019 bout. The fight headlines a stacked card in Las Vegas that also features a women's bantamweight title fight and several top-ten matchups.
+    fullContent: `Islam Makhachev will defend his UFC lightweight title against Arman Tsarukyan in the main event of UFC 321. The fight headlines a stacked card in Las Vegas that also features a women's bantamweight title fight and several top-ten matchups.
 
 Makhachev has been nearly unstoppable since capturing the title, with dominant wins over Alexander Volkanovski, Dustin Poirier, and Justin Gaethje. Tsarukyan, meanwhile, has emerged as the division's most dangerous challenger, blending explosive wrestling with improving striking.
 

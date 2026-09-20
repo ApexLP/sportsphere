@@ -69,10 +69,10 @@ export const trendingTopics: TrendingTopic[] = [
   },
   {
     id: "6",
-    hashtag: "#UFC316",
+    hashtag: "#UFC321",
     tweetCount: "334K",
     category: "Combat Sports",
-    description: "Makhachev vs Tsarukyan lightweight title rematch sold out in Las Vegas",
+    description: "Makhachev vs Tsarukyan lightweight title fight sold out in Las Vegas",
     relatedNews: ["6"]
   },
   {

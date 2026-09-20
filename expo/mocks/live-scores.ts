@@ -166,7 +166,7 @@ export const mockLiveScores: LiveScore[] = [
     homeColor: "#D20A0A",
     awayColor: "#1E90FF",
     status: "UPCOMING",
-    time: "UFC 316 Main Event",
+    time: "UFC 321 Main Event · Sat 10:00 PM ET",
     viewers: "1.8M"
   },
   // Boxing

@@ -194,8 +194,8 @@ export const mockTeams: Team[] = [
     sport: "Combat Sports",
     league: "UFC",
     color: "#D20A0A",
-    record: "26-1",
-    nextGame: "UFC 316"
+    record: "27-1",
+    nextGame: "UFC 321"
   },
   {
     id: "Arman Tsarukyan",
@@ -204,8 +204,8 @@ export const mockTeams: Team[] = [
     sport: "Combat Sports",
     league: "UFC",
     color: "#1E90FF",
-    record: "22-3",
-    nextGame: "UFC 316"
+    record: "23-3",
+    nextGame: "UFC 321"
   },
   // Boxing
   {
