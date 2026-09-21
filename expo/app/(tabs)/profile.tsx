@@ -22,9 +22,9 @@ import {
   Search,
   LucideIcon
 } from "lucide-react-native";
-import { useTheme } from "@/hooks/theme-context";
+import { useTheme, ThemeColors } from "@/hooks/theme-context";
 import { useFavorites } from "@/hooks/favorites-context";
-import { mockTeams } from "@/mocks/teams-data";
+import { mockTeams, Team } from "@/mocks/teams-data";
 
 type SettingItem = {
   icon: LucideIcon;
@@ -44,19 +44,81 @@ type SettingsGroup = {
   items: SettingItem[];
 };
 
-export default function ProfileScreen() {
-  const { colors } = useTheme();
-  const { favorites, toggleFavorite } = useFavorites();
-  const [notifications, setNotifications] = React.useState(true);
-  const [liveAlerts, setLiveAlerts] = React.useState(false);
-
-  // User profile form state
+// Isolated so typing in these fields only re-renders this form, not the
+// whole Profile screen (the team grid and settings lists below don't need
+// to reconcile on every keystroke).
+const AccountInfoForm = React.memo(function AccountInfoForm({ colors }: { colors: ThemeColors }) {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
 
-  // My Teams (favorites) state
+  return (
+    <View style={styles.settingsGroup}>
+      <Text style={[styles.groupTitle, { color: colors.textSecondary }]}>Account Information</Text>
+      <View style={[styles.settingsCard, { backgroundColor: colors.surface }]}>
+        <View style={[styles.inputContainer, { borderBottomColor: colors.border }]}>
+          <Text style={[styles.inputLabel, { color: colors.textSecondary }]}>First Name</Text>
+          <TextInput
+            style={[styles.textInput, { color: colors.text, borderColor: colors.border }]}
+            value={firstName}
+            onChangeText={setFirstName}
+            placeholder="Enter your first name"
+            placeholderTextColor={colors.textSecondary}
+          />
+        </View>
+
+        <View style={[styles.inputContainer, { borderBottomColor: colors.border }]}>
+          <Text style={[styles.inputLabel, { color: colors.textSecondary }]}>Last Name</Text>
+          <TextInput
+            style={[styles.textInput, { color: colors.text, borderColor: colors.border }]}
+            value={lastName}
+            onChangeText={setLastName}
+            placeholder="Enter your last name"
+            placeholderTextColor={colors.textSecondary}
+          />
+        </View>
+
+        <View style={[styles.inputContainer, { borderBottomColor: colors.border }]}>
+          <Text style={[styles.inputLabel, { color: colors.textSecondary }]}>Email</Text>
+          <TextInput
+            style={[styles.textInput, { color: colors.text, borderColor: colors.border }]}
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Enter your email"
+            placeholderTextColor={colors.textSecondary}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={[styles.inputLabel, { color: colors.textSecondary }]}>Phone Number (Optional)</Text>
+          <TextInput
+            style={[styles.textInput, { color: colors.text, borderColor: colors.border }]}
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
+            placeholder="Enter your phone number"
+            placeholderTextColor={colors.textSecondary}
+            keyboardType="phone-pad"
+          />
+        </View>
+      </View>
+    </View>
+  );
+});
+
+// Isolated so typing in the search box only re-renders the team list, not
+// the Account Information form or the Settings groups below it.
+const MyTeamsSection = React.memo(function MyTeamsSection({
+  colors,
+  favorites,
+  toggleFavorite,
+}: {
+  colors: ThemeColors;
+  favorites: string[];
+  toggleFavorite: (teamId: string) => void;
+}) {
   const [teamSearchQuery, setTeamSearchQuery] = React.useState("");
   const [selectedTeamSport, setSelectedTeamSport] = React.useState("All");
 
@@ -72,8 +134,126 @@ export default function ProfileScreen() {
     });
   }, [teamSearchQuery, selectedTeamSport]);
 
-  const favoriteTeams = filteredTeams.filter(team => favorites.includes(team.id));
-  const suggestedTeams = filteredTeams.filter(team => !favorites.includes(team.id)).slice(0, 6);
+  const favoriteTeams = filteredTeams.filter((team: Team) => favorites.includes(team.id));
+  const suggestedTeams = filteredTeams.filter((team: Team) => !favorites.includes(team.id)).slice(0, 6);
+
+  return (
+    <View style={styles.settingsGroup}>
+      <Text style={[styles.groupTitle, { color: colors.textSecondary }]}>My Teams</Text>
+
+      <View style={[styles.teamSearchContainer, { backgroundColor: colors.surface }]}>
+        <Search size={18} color={colors.textSecondary} />
+        <TextInput
+          style={[styles.teamSearchInput, { color: colors.text }]}
+          placeholder="Search teams, leagues, sports..."
+          placeholderTextColor={colors.textSecondary}
+          value={teamSearchQuery}
+          onChangeText={setTeamSearchQuery}
+        />
+      </View>
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.teamFilterContent}
+      >
+        {teamSports.map((sport) => (
+          <TouchableOpacity
+            key={sport}
+            style={[
+              styles.teamFilterChip,
+              { backgroundColor: selectedTeamSport === sport ? colors.orange : colors.surface }
+            ]}
+            onPress={() => setSelectedTeamSport(sport)}
+          >
+            <Text style={[
+              styles.teamFilterChipText,
+              { color: selectedTeamSport === sport ? colors.background : colors.textSecondary }
+            ]}>
+              {sport}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
+      {favoriteTeams.length > 0 ? (
+        <View style={styles.teamsGrid}>
+          {favoriteTeams.map((team) => (
+            <View key={team.id} style={[styles.teamCard, { backgroundColor: colors.surface }]}>
+              <TouchableOpacity
+                style={styles.heartButton}
+                onPress={() => toggleFavorite(team.id)}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              >
+                <Heart size={18} color={colors.orange} fill={colors.orange} />
+              </TouchableOpacity>
+
+              <View style={[styles.teamLogo, { backgroundColor: colors.orange }]}>
+                <Text style={styles.teamLogoText}>{team.abbreviation}</Text>
+              </View>
+
+              <Text style={[styles.teamName, { color: colors.text }]} numberOfLines={1}>{team.name}</Text>
+              <Text style={[styles.teamLeague, { color: colors.textSecondary }]}>{team.league}</Text>
+
+              <View style={styles.teamStats}>
+                <View style={styles.statItemRow}>
+                  <Trophy size={12} color={colors.textSecondary} />
+                  <Text style={[styles.teamStatText, { color: colors.textSecondary }]}>{team.record}</Text>
+                </View>
+                <View style={styles.statItemRow}>
+                  <Calendar size={12} color={colors.textSecondary} />
+                  <Text style={[styles.teamStatText, { color: colors.textSecondary }]}>{team.nextGame}</Text>
+                </View>
+              </View>
+            </View>
+          ))}
+        </View>
+      ) : (
+        <View style={styles.teamsEmptyState}>
+          <Heart size={40} color={colors.textSecondary} />
+          <Text style={[styles.teamsEmptyTitle, { color: colors.text }]}>No Favorite Teams</Text>
+          <Text style={[styles.teamsEmptyText, { color: colors.textSecondary }]}>
+            Follow teams below to see their scores and news across the app
+          </Text>
+        </View>
+      )}
+
+      {suggestedTeams.length > 0 && (
+        <View style={styles.suggestedSection}>
+          <Text style={[styles.suggestedSectionTitle, { color: colors.text }]}>Suggested Teams</Text>
+          {suggestedTeams.map((team) => (
+            <TouchableOpacity
+              key={team.id}
+              style={[styles.suggestedCard, { backgroundColor: colors.surface }]}
+              onPress={() => toggleFavorite(team.id)}
+              activeOpacity={0.9}
+            >
+              <View style={[styles.suggestedLogo, { backgroundColor: colors.orange }]}>
+                <Text style={styles.suggestedLogoText}>{team.abbreviation}</Text>
+              </View>
+              <View style={styles.suggestedInfo}>
+                <Text style={[styles.suggestedName, { color: colors.text }]} numberOfLines={1}>{team.name}</Text>
+                <Text style={[styles.suggestedLeague, { color: colors.textSecondary }]}>{team.league} · {team.record}</Text>
+              </View>
+              <TouchableOpacity
+                style={[styles.addButton, { backgroundColor: colors.background }]}
+                onPress={() => toggleFavorite(team.id)}
+              >
+                <Plus size={18} color={colors.orange} />
+              </TouchableOpacity>
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
+    </View>
+  );
+});
+
+export default function ProfileScreen() {
+  const { colors } = useTheme();
+  const { favorites, toggleFavorite } = useFavorites();
+  const [notifications, setNotifications] = React.useState(true);
+  const [liveAlerts, setLiveAlerts] = React.useState(false);
 
   const settingsGroups: SettingsGroup[] = [
     {
@@ -85,16 +265,16 @@ export default function ProfileScreen() {
     {
       title: "Preferences",
       items: [
-        { 
-          icon: Bell, 
-          label: "Push Notifications", 
+        {
+          icon: Bell,
+          label: "Push Notifications",
           toggle: true,
           value: notifications,
           onToggle: setNotifications
         },
-        { 
-          icon: Trophy, 
-          label: "Live Score Alerts", 
+        {
+          icon: Trophy,
+          label: "Live Score Alerts",
           toggle: true,
           value: liveAlerts,
           onToggle: setLiveAlerts
@@ -119,7 +299,7 @@ export default function ProfileScreen() {
         </View>
         <Text style={[styles.userName, { color: colors.text }]}>Sports Fan</Text>
         <Text style={[styles.userEmail, { color: colors.textSecondary }]}>fan@sports.com</Text>
-        
+
         <View style={styles.statsRow}>
           <View style={styles.statItem}>
             <Heart size={20} color={colors.orange} />
@@ -135,168 +315,9 @@ export default function ProfileScreen() {
         </View>
       </View>
 
-      {/* Account Information Form */}
-      <View style={styles.settingsGroup}>
-        <Text style={[styles.groupTitle, { color: colors.textSecondary }]}>Account Information</Text>
-        <View style={[styles.settingsCard, { backgroundColor: colors.surface }]}>
-          <View style={[styles.inputContainer, { borderBottomColor: colors.border }]}>
-            <Text style={[styles.inputLabel, { color: colors.textSecondary }]}>First Name</Text>
-            <TextInput
-              style={[styles.textInput, { color: colors.text, borderColor: colors.border }]}
-              value={firstName}
-              onChangeText={setFirstName}
-              placeholder="Enter your first name"
-              placeholderTextColor={colors.textSecondary}
-            />
-          </View>
-          
-          <View style={[styles.inputContainer, { borderBottomColor: colors.border }]}>
-            <Text style={[styles.inputLabel, { color: colors.textSecondary }]}>Last Name</Text>
-            <TextInput
-              style={[styles.textInput, { color: colors.text, borderColor: colors.border }]}
-              value={lastName}
-              onChangeText={setLastName}
-              placeholder="Enter your last name"
-              placeholderTextColor={colors.textSecondary}
-            />
-          </View>
-          
-          <View style={[styles.inputContainer, { borderBottomColor: colors.border }]}>
-            <Text style={[styles.inputLabel, { color: colors.textSecondary }]}>Email</Text>
-            <TextInput
-              style={[styles.textInput, { color: colors.text, borderColor: colors.border }]}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="Enter your email"
-              placeholderTextColor={colors.textSecondary}
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-          </View>
-          
-          <View style={styles.inputContainer}>
-            <Text style={[styles.inputLabel, { color: colors.textSecondary }]}>Phone Number (Optional)</Text>
-            <TextInput
-              style={[styles.textInput, { color: colors.text, borderColor: colors.border }]}
-              value={phoneNumber}
-              onChangeText={setPhoneNumber}
-              placeholder="Enter your phone number"
-              placeholderTextColor={colors.textSecondary}
-              keyboardType="phone-pad"
-            />
-          </View>
-        </View>
-      </View>
+      <AccountInfoForm colors={colors} />
 
-      {/* My Teams (Favorites) */}
-      <View style={styles.settingsGroup}>
-        <Text style={[styles.groupTitle, { color: colors.textSecondary }]}>My Teams</Text>
-
-        <View style={[styles.teamSearchContainer, { backgroundColor: colors.surface }]}>
-          <Search size={18} color={colors.textSecondary} />
-          <TextInput
-            style={[styles.teamSearchInput, { color: colors.text }]}
-            placeholder="Search teams, leagues, sports..."
-            placeholderTextColor={colors.textSecondary}
-            value={teamSearchQuery}
-            onChangeText={setTeamSearchQuery}
-          />
-        </View>
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.teamFilterContent}
-        >
-          {teamSports.map((sport) => (
-            <TouchableOpacity
-              key={sport}
-              style={[
-                styles.teamFilterChip,
-                { backgroundColor: selectedTeamSport === sport ? colors.orange : colors.surface }
-              ]}
-              onPress={() => setSelectedTeamSport(sport)}
-            >
-              <Text style={[
-                styles.teamFilterChipText,
-                { color: selectedTeamSport === sport ? colors.background : colors.textSecondary }
-              ]}>
-                {sport}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-
-        {favoriteTeams.length > 0 ? (
-          <View style={styles.teamsGrid}>
-            {favoriteTeams.map((team) => (
-              <View key={team.id} style={[styles.teamCard, { backgroundColor: colors.surface }]}>
-                <TouchableOpacity
-                  style={styles.heartButton}
-                  onPress={() => toggleFavorite(team.id)}
-                  hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                >
-                  <Heart size={18} color={colors.orange} fill={colors.orange} />
-                </TouchableOpacity>
-
-                <View style={[styles.teamLogo, { backgroundColor: colors.orange }]}>
-                  <Text style={styles.teamLogoText}>{team.abbreviation}</Text>
-                </View>
-
-                <Text style={[styles.teamName, { color: colors.text }]} numberOfLines={1}>{team.name}</Text>
-                <Text style={[styles.teamLeague, { color: colors.textSecondary }]}>{team.league}</Text>
-
-                <View style={styles.teamStats}>
-                  <View style={styles.statItemRow}>
-                    <Trophy size={12} color={colors.textSecondary} />
-                    <Text style={[styles.teamStatText, { color: colors.textSecondary }]}>{team.record}</Text>
-                  </View>
-                  <View style={styles.statItemRow}>
-                    <Calendar size={12} color={colors.textSecondary} />
-                    <Text style={[styles.teamStatText, { color: colors.textSecondary }]}>{team.nextGame}</Text>
-                  </View>
-                </View>
-              </View>
-            ))}
-          </View>
-        ) : (
-          <View style={styles.teamsEmptyState}>
-            <Heart size={40} color={colors.textSecondary} />
-            <Text style={[styles.teamsEmptyTitle, { color: colors.text }]}>No Favorite Teams</Text>
-            <Text style={[styles.teamsEmptyText, { color: colors.textSecondary }]}>
-              Follow teams below to see their scores and news across the app
-            </Text>
-          </View>
-        )}
-
-        {suggestedTeams.length > 0 && (
-          <View style={styles.suggestedSection}>
-            <Text style={[styles.suggestedSectionTitle, { color: colors.text }]}>Suggested Teams</Text>
-            {suggestedTeams.map((team) => (
-              <TouchableOpacity
-                key={team.id}
-                style={[styles.suggestedCard, { backgroundColor: colors.surface }]}
-                onPress={() => toggleFavorite(team.id)}
-                activeOpacity={0.9}
-              >
-                <View style={[styles.suggestedLogo, { backgroundColor: colors.orange }]}>
-                  <Text style={styles.suggestedLogoText}>{team.abbreviation}</Text>
-                </View>
-                <View style={styles.suggestedInfo}>
-                  <Text style={[styles.suggestedName, { color: colors.text }]} numberOfLines={1}>{team.name}</Text>
-                  <Text style={[styles.suggestedLeague, { color: colors.textSecondary }]}>{team.league} · {team.record}</Text>
-                </View>
-                <TouchableOpacity
-                  style={[styles.addButton, { backgroundColor: colors.background }]}
-                  onPress={() => toggleFavorite(team.id)}
-                >
-                  <Plus size={18} color={colors.orange} />
-                </TouchableOpacity>
-              </TouchableOpacity>
-            ))}
-          </View>
-        )}
-      </View>
+      <MyTeamsSection colors={colors} favorites={favorites} toggleFavorite={toggleFavorite} />
 
       {/* Settings Groups */}
       {settingsGroups.map((group, groupIndex) => (
@@ -316,9 +337,9 @@ export default function ProfileScreen() {
                   activeOpacity={item.toggle ? 1 : 0.7}
                 >
                   <View style={styles.settingLeft}>
-                    <Icon 
-                      size={20} 
-                      color={(item.toggle === false && item.danger) ? "#EF4444" : colors.textSecondary} 
+                    <Icon
+                      size={20}
+                      color={(item.toggle === false && item.danger) ? "#EF4444" : colors.textSecondary}
                     />
                     <Text style={[
                       styles.settingLabel,

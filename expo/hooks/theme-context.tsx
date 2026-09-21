@@ -1,7 +1,7 @@
 import createContextHook from '@nkzw/create-context-hook';
 import { useState, useMemo } from 'react';
 
-interface ThemeColors {
+export interface ThemeColors {
   primary: string;
   background: string;
   surface: string;
