@@ -10,6 +10,15 @@ export interface TrendingTopic {
 
 export const trendingTopics: TrendingTopic[] = [
   {
+    id: "20",
+    hashtag: "#PresidentsCup",
+    tweetCount: "312K",
+    category: "Golf",
+    description: "USA clings to a 13-10 lead over the International Team as Sunday singles get underway",
+    isLive: true,
+    relatedNews: ["15"]
+  },
+  {
     id: "9",
     hashtag: "#NFLWeek3",
     tweetCount: "289K",

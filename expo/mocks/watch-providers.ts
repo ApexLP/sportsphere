@@ -30,6 +30,7 @@ const LEAGUE_TO_PROVIDERS: Record<string, string[]> = {
   "Formula 1": ["appletv"],
   "Premier League": ["peacock"],
   "The Open Championship": ["peacock", "paramount", "espn"],
+  "Presidents Cup": ["peacock"],
   "Olympics": ["peacock"],
 };
 

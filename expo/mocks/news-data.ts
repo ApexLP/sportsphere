@@ -12,6 +12,21 @@ export interface NewsArticle {
 
 export const mockNews: NewsArticle[] = [
   {
+    id: "15",
+    title: "Presidents Cup Comes Down to the Wire as Singles Matches Get Underway",
+    summary: "Scottie Scheffler and the USA Team carry a slim lead over Jason Day's International squad into Sunday's 12 singles matches.",
+    imageUrl: "https://images.unsplash.com/photo-1592919505780-303950717480?w=800",
+    author: "Marcus Webb",
+    timeAgo: "Live",
+    sport: "Golf",
+    isLive: true,
+    fullContent: `The Presidents Cup is down to its final session, with Scottie Scheffler and the USA Team holding a 13-10 lead over Jason Day's International Team heading into Sunday's 12 singles matches.
+
+The Internationals need to win at least 8 of the 12 available points to reclaim the Cup for the first time since 2019, while the USA only needs 2.5 points to retain the trophy outright.
+
+Sunday's card is loaded at the top, with Scheffler drawing Hideki Matsuyama in an anchor match that could end up deciding where the Cup goes.`
+  },
+  {
     id: "13",
     title: "Panthers Set to Raise Banner as NHL Season Opener Nears",
     summary: "Florida gears up to defend back-to-back titles as training camps open across the league.",

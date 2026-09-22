@@ -360,6 +360,22 @@ export const mockLiveScores: LiveScore[] = [
     time: "10:10 PM ET",
     viewers: "780K"
   },
+  // Golf — Presidents Cup (team match play, so it's a head-to-head score
+  // rather than a stroke-play leaderboard)
+  {
+    id: "22",
+    sport: "Golf",
+    league: "Presidents Cup",
+    homeTeam: "USA",
+    awayTeam: "International",
+    homeScore: 13,
+    awayScore: 10,
+    homeColor: "#B22234",
+    awayColor: "#154734",
+    status: "LIVE",
+    time: "Singles Session",
+    viewers: "980K"
+  },
 ];
 
 export const mockLeaderboardEvents: LeaderboardEvent[] = [
