@@ -72,6 +72,7 @@ async function fetchSource(source: EspnSource): Promise<LiveScore[]> {
           awayColor: away?.team?.color ? `#${away.team.color}` : "#94A3B8",
           status: mapStatus(state),
           time: event?.status?.type?.shortDetail ?? "",
+          date: event?.date ? String(event.date).slice(0, 10) : undefined,
           viewers: source.viewers,
           venue: comp?.venue?.fullName,
           broadcast: comp?.broadcasts?.[0]?.names?.join(", "),

@@ -17,6 +17,9 @@ export interface LiveScore {
   awayColor: string;
   status: "LIVE" | "UPCOMING" | "FINISHED";
   time: string;
+  // ISO date (YYYY-MM-DD) the event happened on. Only meaningful for
+  // FINISHED items — used to drop results older than 7 days from the feed.
+  date?: string;
   viewers?: string;
   venue?: string;
   broadcast?: string;
@@ -45,8 +48,23 @@ export interface LeaderboardEvent {
   eventName: string;
   status: "LIVE" | "UPCOMING" | "FINISHED";
   time: string;
+  // ISO date (YYYY-MM-DD) the event happened on. Only meaningful for
+  // FINISHED items — used to drop results older than 7 days from the feed.
+  date?: string;
   entries: LeaderboardEntry[];
   viewers?: string;
+}
+
+// True when a FINISHED item's date is more than `days` days before today.
+// Items with no date (or not FINISHED) are never considered stale here —
+// callers should only pass FINISHED items with a date through this check.
+export function isStaleFinishedEvent(date: string | undefined, days: number = 7): boolean {
+  if (!date) return false;
+  const eventDate = new Date(date);
+  if (Number.isNaN(eventDate.getTime())) return false;
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - days);
+  return eventDate < cutoff;
 }
 
 const LEADERBOARD_MOTOR_RACING_LEAGUES = new Set([
@@ -94,6 +112,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#000000",
     status: "FINISHED",
     time: "Final",
+    date: "2026-09-19",
     viewers: "8.5M"
   },
   {
@@ -123,6 +142,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#009246",
     status: "FINISHED",
     time: "Final",
+    date: "2026-07-12",
     viewers: "980K"
   },
   {
@@ -137,6 +157,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#B22234",
     status: "FINISHED",
     time: "Final",
+    date: "2026-07-11",
     viewers: "720K"
   },
   // Rugby
@@ -152,6 +173,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#007A4D",
     status: "FINISHED",
     time: "Final",
+    date: "2026-09-20",
     viewers: "310K"
   },
   // Combat Sports / UFC
@@ -182,6 +204,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#1E90FF",
     status: "FINISHED",
     time: "Crawford wins by unanimous decision",
+    date: "2025-09-13",
     viewers: "2.2M"
   },
   // NFL
@@ -226,6 +249,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#BB0000",
     status: "FINISHED",
     time: "Final",
+    date: "2026-09-19",
     viewers: "1.3M"
   },
   {
@@ -299,6 +323,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#461D7C",
     status: "FINISHED",
     time: "NCAA Finals",
+    date: "2026-06-13",
     viewers: "72K"
   },
   // NHL Hockey
@@ -329,6 +354,7 @@ export const mockLiveScores: LiveScore[] = [
     awayColor: "#708090",
     status: "FINISHED",
     time: "Dornoch wins",
+    date: "2026-08-23",
     viewers: "310K"
   },
   // Baseball
@@ -404,6 +430,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "6 Hours of Spa — Hypercar",
     status: "FINISHED",
     time: "Final",
+    date: "2026-05-10",
     viewers: "410K",
     entries: [
       { position: 1, name: "#8 Toyota Gazoo Racing", detail: "Winner", isLeader: true },
@@ -421,6 +448,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Honda Indy 200 at Mid-Ohio",
     status: "FINISHED",
     time: "Final",
+    date: "2026-07-06",
     viewers: "560K",
     entries: [
       { position: 1, name: "Alex Palou", detail: "Winner", isLeader: true },
@@ -438,6 +466,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Rally Finland",
     status: "FINISHED",
     time: "Final",
+    date: "2026-08-02",
     viewers: "290K",
     entries: [
       { position: 1, name: "Kalle Rovanpera", detail: "Winner", isLeader: true },
@@ -472,6 +501,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Petit Le Mans — GTP",
     status: "FINISHED",
     time: "Final",
+    date: "2026-08-15",
     viewers: "180K",
     entries: [
       { position: 1, name: "#10 Cadillac Racing", detail: "Winner", isLeader: true },
@@ -489,6 +519,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Spa 24 Hours — GT3",
     status: "FINISHED",
     time: "Final",
+    date: "2026-06-28",
     viewers: "220K",
     entries: [
       { position: 1, name: "#32 Team WRT (Audi)", detail: "Winner", isLeader: true },
@@ -506,6 +537,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "24 Hours of Le Mans — Hypercar",
     status: "FINISHED",
     time: "Final",
+    date: "2026-06-14",
     viewers: "1.9M",
     entries: [
       { position: 1, name: "#8 Toyota Gazoo Racing", detail: "Winner", isLeader: true },
@@ -523,6 +555,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "The Open Championship",
     status: "FINISHED",
     time: "Final",
+    date: "2026-07-19",
     viewers: "1.4M",
     entries: [
       { position: 1, name: "Scottie Scheffler", detail: "-17 (Winner)", isLeader: true },
@@ -558,6 +591,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Tour de France — Final GC",
     status: "FINISHED",
     time: "Final",
+    date: "2026-07-26",
     viewers: "1.8M",
     entries: [
       { position: 1, name: "Tadej Pogacar", detail: "Winner", isLeader: true },
@@ -575,6 +609,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Giro d'Italia — Stage 12 GC",
     status: "FINISHED",
     time: "Stage 12 Final",
+    date: "2026-05-24",
     viewers: "540K",
     entries: [
       { position: 1, name: "Tadej Pogacar", detail: "Leader", isLeader: true },
@@ -592,6 +627,7 @@ export const mockLeaderboardEvents: LeaderboardEvent[] = [
     eventName: "Men's 100m Final",
     status: "FINISHED",
     time: "Final",
+    date: "2024-08-04",
     viewers: "4.2M",
     entries: [
       { position: 1, name: "Noah Lyles", detail: "9.79s", isLeader: true },

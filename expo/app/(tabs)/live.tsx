@@ -16,7 +16,7 @@ import {
   ScaleDecorator,
   RenderItemParams,
 } from "react-native-draggable-flatlist";
-import { mockLiveScores, mockLeaderboardEvents, LiveScore, LeaderboardEvent } from "@/mocks/live-scores";
+import { mockLiveScores, mockLeaderboardEvents, LiveScore, LeaderboardEvent, isStaleFinishedEvent } from "@/mocks/live-scores";
 import { useFavorites } from "@/hooks/favorites-context";
 import { useTheme } from "@/hooks/theme-context";
 import { useF1Live } from "@/hooks/use-f1-live";
@@ -103,7 +103,9 @@ export default function LiveScreen() {
     }, 2000);
   }, []);
 
-  const allItems: FeedItem[] = [...scores, ...leaderboardEvents];
+  const allItems: FeedItem[] = [...scores, ...leaderboardEvents].filter(
+    item => !(item.status === "FINISHED" && isStaleFinishedEvent(item.date))
+  );
 
   let filteredScores = selectedSport === "all"
     ? allItems
