@@ -455,6 +455,16 @@ export const mockTeams: Team[] = [
     record: "Conf Finals",
     nextGame: "Season Prep"
   },
+  {
+    id: "Chicago Blackhawks",
+    name: "Chicago Blackhawks",
+    abbreviation: "CHI",
+    sport: "NHL Hockey",
+    league: "NHL",
+    color: "#CF0A2C",
+    record: "Missed Playoffs",
+    nextGame: "Season Prep"
+  },
   // Horse Racing
   {
     id: "Dornoch",
