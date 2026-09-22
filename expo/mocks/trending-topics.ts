@@ -12,10 +12,9 @@ export const trendingTopics: TrendingTopic[] = [
   {
     id: "20",
     hashtag: "#PresidentsCup",
-    tweetCount: "312K",
+    tweetCount: "198K",
     category: "Golf",
-    description: "USA clings to a 13-10 lead over the International Team as Sunday singles get underway",
-    isLive: true,
+    description: "Rosters set as USA looks to defend the Cup against Jason Day's International Team",
     relatedNews: ["15"]
   },
   {

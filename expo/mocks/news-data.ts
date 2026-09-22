@@ -13,18 +13,17 @@ export interface NewsArticle {
 export const mockNews: NewsArticle[] = [
   {
     id: "15",
-    title: "Presidents Cup Comes Down to the Wire as Singles Matches Get Underway",
-    summary: "Scottie Scheffler and the USA Team carry a slim lead over Jason Day's International squad into Sunday's 12 singles matches.",
+    title: "USA, International Team Set Rosters Ahead of Presidents Cup",
+    summary: "Scottie Scheffler headlines the USA Team as it looks to defend the Cup against Jason Day's International squad this week.",
     imageUrl: "https://images.unsplash.com/photo-1592919505780-303950717480?w=800",
     author: "Marcus Webb",
-    timeAgo: "Live",
+    timeAgo: "2 hours ago",
     sport: "Golf",
-    isLive: true,
-    fullContent: `The Presidents Cup is down to its final session, with Scottie Scheffler and the USA Team holding a 13-10 lead over Jason Day's International Team heading into Sunday's 12 singles matches.
+    fullContent: `The Presidents Cup gets underway this week, with Scottie Scheffler leading a USA Team looking to defend the Cup against Jason Day's International Team.
 
-The Internationals need to win at least 8 of the 12 available points to reclaim the Cup for the first time since 2019, while the USA only needs 2.5 points to retain the trophy outright.
+The Internationals will need to win at least 15.5 of the 30 available points to reclaim the Cup for the first time since 2019, while the USA only needs to tie to retain the trophy outright.
 
-Sunday's card is loaded at the top, with Scheffler drawing Hideki Matsuyama in an anchor match that could end up deciding where the Cup goes.`
+Thursday's opening session kicks off with foursomes play, with Scheffler and Hideki Matsuyama both expected to anchor their respective sides all week.`
   },
   {
     id: "13",

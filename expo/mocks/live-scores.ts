@@ -368,12 +368,12 @@ export const mockLiveScores: LiveScore[] = [
     league: "Presidents Cup",
     homeTeam: "USA",
     awayTeam: "International",
-    homeScore: 13,
-    awayScore: 10,
+    homeScore: 0,
+    awayScore: 0,
     homeColor: "#B22234",
     awayColor: "#154734",
-    status: "LIVE",
-    time: "Singles Session",
+    status: "UPCOMING",
+    time: "Thu 12:00 PM ET",
     viewers: "980K"
   },
 ];
