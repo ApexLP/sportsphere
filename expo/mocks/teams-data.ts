@@ -290,6 +290,16 @@ export const mockTeams: Team[] = [
     record: "12-5",
     nextGame: "Training Camp"
   },
+  {
+    id: "Chicago Bears",
+    name: "Chicago Bears",
+    abbreviation: "CHI",
+    sport: "NFL",
+    league: "NFL",
+    color: "#0B162A",
+    record: "11-6",
+    nextGame: "Training Camp"
+  },
   // NCAA Football
   {
     id: "Georgia Bulldogs",
@@ -496,5 +506,15 @@ export const mockTeams: Team[] = [
     color: "#005A9C",
     record: "56-33",
     nextGame: "vs SD"
+  },
+  {
+    id: "Chicago Cubs",
+    name: "Chicago Cubs",
+    abbreviation: "CHC",
+    sport: "Baseball",
+    league: "MLB",
+    color: "#0E3386",
+    record: "51-38",
+    nextGame: "vs STL"
   },
 ];

@@ -125,10 +125,6 @@ export default function HomeScreen() {
           onPress={() => handleArticlePress(article)}
           activeOpacity={0.9}
         >
-          <Image 
-            source={{ uri: article.imageUrl }} 
-            style={styles.articleImage}
-          />
           <View style={styles.articleContent}>
             <View style={styles.articleHeader}>
               <Text style={[styles.articleSport, { color: colors.orange }]}>{article.sport}</Text>
@@ -272,10 +268,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
-  },
-  articleImage: {
-    width: 120,
-    height: 120,
   },
   articleContent: {
     flex: 1,
